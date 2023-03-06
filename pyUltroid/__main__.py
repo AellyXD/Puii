@@ -34,22 +34,22 @@ def main():
     if (
         udB.get_key("UPDATE_ON_RESTART")
         and os.path.exists(".git")
-        and ultroid_bot.run_in_loop(updater())
+        and puii_bot.run_in_loop(updater())
     ):
-        ultroid_bot.run_in_loop(bash("bash installer.sh"))
+        puii_bot.run_in_loop(bash("bash installer.sh"))
 
-        os.execl(sys.executable, sys.executable, "-m", "pyUltroid")
+        os.execl(sys.executable, sys.executable, "-m", "pyPuii")
 
-    ultroid_bot.run_in_loop(startup_stuff())
+    puii_bot.run_in_loop(startup_stuff())
 
-    ultroid_bot.me.phone = None
+    puii_bot.me.phone = None
 
-    if not ultroid_bot.me.bot:
-        udB.set_key("OWNER_ID", ultroid_bot.uid)
+    if not puii_bot.me.bot:
+        udB.set_key("OWNER_ID", puii_bot.uid)
 
     LOGS.info("Initialising...")
 
-    ultroid_bot.run_in_loop(autopilot())
+    puii_bot.run_in_loop(autopilot())
 
     pmbot = udB.get_key("PMBOT")
     manager = udB.get_key("MANAGER")
@@ -68,30 +68,30 @@ def main():
 
     suc_msg = """
             ----------------------------------------------------------------------
-                Ultroid has been deployed! Visit @TheUltroid for updates!!
+                Puii has been deployed! Visit @AellyXD for updates!!
             ----------------------------------------------------------------------
     """
 
     # for channel plugins
     plugin_channels = udB.get_key("PLUGIN_CHANNEL")
 
-    # Customize Ultroid Assistant...
-    ultroid_bot.run_in_loop(customize())
+    # Customize Puii Assistant...
+    puii_bot.run_in_loop(customize())
 
     # Load Addons from Plugin Channels.
     if plugin_channels:
-        ultroid_bot.run_in_loop(plug(plugin_channels))
+        puii_bot.run_in_loop(plug(plugin_channels))
 
     # Send/Ignore Deploy Message..
     if not udB.get_key("LOG_OFF"):
-        ultroid_bot.run_in_loop(ready())
+        puii_bot.run_in_loop(ready())
     if AsyncIOScheduler:
         scheduler = AsyncIOScheduler()
         scheduler.add_job(fetch_ann, "interval", minutes=12 * 60)
         scheduler.start()
 
     # Edit Restarting Message (if It's restarting)
-    ultroid_bot.run_in_loop(WasItRestart(udB))
+    puii_bot.run_in_loop(WasItRestart(udB))
 
     try:
         cleanup_cache()
@@ -99,7 +99,7 @@ def main():
         pass
 
     LOGS.info(
-        f"Took {time_formatter((time.time() - start_time)*1000)} to start •ULTROID•"
+        f"Took {time_formatter((time.time() - start_time)*1000)} to start *PUII*"
     )
     LOGS.info(suc_msg)
 
