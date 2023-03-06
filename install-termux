@@ -1,16 +1,14 @@
 #!/usr/bin/env bash
-# Ultroid - UserBot
-# Copyright (C) 2021-2022 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+# Puii - UserBot
+# Copyright (C) 2023-24
+#this file is the part of https://AellyXD/Puii
 
 if [ -d "resources" ]
 then
     echo "Current directory Identified.."
 else
     apt install git -y
-    git clone https://github.com/TeamUltroid/Ultroid
+    git clone https://github.com/AellyXD/Puii
     cd Ultroid
 fi
 bash resources/startup/termux.sh
