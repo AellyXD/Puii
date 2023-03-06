@@ -18,5 +18,5 @@ class DependencyMissingError(ImportError):
     ...
 
 
-class RunningAsFunctionLibError(pyUltroidError):
+class RunningAsFunctionLibError(pyPuiiError):
     ...

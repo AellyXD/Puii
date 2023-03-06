@@ -1,9 +1,9 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2022 TeamUltroid
+# Puii - UserBot
+# Copyright (C) 2021-2022 TeamPuii
 #
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
+# This file is a part of < https://github.com/TeamPuii/Puii/ >
 # PLease read the GNU Affero General Public License in
-# <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
+# <https://github.com/TeamPuii/pyPuii/blob/main/LICENSE>.
 
 import ast
 import os
@@ -108,13 +108,13 @@ class _BaseDatabase:
 
 
 class MongoDB(_BaseDatabase):
-    def __init__(self, key, dbname="UltroidDB"):
+    def __init__(self, key, dbname="PuiiDB"):
         self.dB = MongoClient(key, serverSelectionTimeoutMS=5000)
         self.db = self.dB[dbname]
         super().__init__()
 
     def __repr__(self):
-        return f"<Ultroid.MonGoDB\n -total_keys: {len(self.keys())}\n>"
+        return f"<Puii.MonGoDB\n -total_keys: {len(self.keys())}\n>"
 
     @property
     def name(self):
@@ -146,7 +146,7 @@ class MongoDB(_BaseDatabase):
             return x["value"]
 
     def flushall(self):
-        self.dB.drop_database("UltroidDB")
+        self.dB.drop_database("PuiiDB")
         self._cache.clear()
         return True
 
@@ -154,7 +154,7 @@ class MongoDB(_BaseDatabase):
 # --------------------------------------------------------------------------------------------- #
 
 # Thanks to "Akash Pattnaik" / @BLUE-DEVIL1134
-# for SQL Implementation in Ultroid.
+# for SQL Implementation in Puii.
 #
 # Please use https://elephantsql.com/ !
 
@@ -169,7 +169,7 @@ class SqlDB(_BaseDatabase):
             self._connection.autocommit = True
             self._cursor = self._connection.cursor()
             self._cursor.execute(
-                "CREATE TABLE IF NOT EXISTS Ultroid (ultroidCli varchar(70))"
+                "CREATE TABLE IF NOT EXISTS Puii (puiiCli varchar(70))"
             )
         except Exception as error:
             LOGS.exception(error)
@@ -186,21 +186,21 @@ class SqlDB(_BaseDatabase):
     @property
     def usage(self):
         self._cursor.execute(
-            "SELECT pg_size_pretty(pg_relation_size('Ultroid')) AS size"
+            "SELECT pg_size_pretty(pg_relation_size('Puii')) AS size"
         )
         data = self._cursor.fetchall()
         return int(data[0][0].split()[0])
 
     def keys(self):
         self._cursor.execute(
-            "SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name  = 'ultroid'"
+            "SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name  = 'puii'"
         )  # case sensitive
         data = self._cursor.fetchall()
         return [_[0] for _ in data]
 
     def get(self, variable):
         try:
-            self._cursor.execute(f"SELECT {variable} FROM Ultroid")
+            self._cursor.execute(f"SELECT {variable} FROM Puii")
         except psycopg2.errors.UndefinedColumn:
             return None
         data = self._cursor.fetchall()
@@ -213,28 +213,28 @@ class SqlDB(_BaseDatabase):
 
     def set(self, key, value):
         try:
-            self._cursor.execute(f"ALTER TABLE Ultroid DROP COLUMN IF EXISTS {key}")
+            self._cursor.execute(f"ALTER TABLE Puii DROP COLUMN IF EXISTS {key}")
         except (psycopg2.errors.UndefinedColumn, psycopg2.errors.SyntaxError):
             pass
         except BaseException as er:
             LOGS.exception(er)
         self._cache.update({key: value})
-        self._cursor.execute(f"ALTER TABLE Ultroid ADD {key} TEXT")
-        self._cursor.execute(f"INSERT INTO Ultroid ({key}) values (%s)", (str(value),))
+        self._cursor.execute(f"ALTER TABLE Puii ADD {key} TEXT")
+        self._cursor.execute(f"INSERT INTO Puii ({key}) values (%s)", (str(value),))
         return True
 
     def delete(self, key):
         try:
-            self._cursor.execute(f"ALTER TABLE Ultroid DROP COLUMN {key}")
+            self._cursor.execute(f"ALTER TABLE Puii DROP COLUMN {key}")
         except psycopg2.errors.UndefinedColumn:
             return False
         return True
 
     def flushall(self):
         self._cache.clear()
-        self._cursor.execute("DROP TABLE Ultroid")
+        self._cursor.execute("DROP TABLE Puii")
         self._cursor.execute(
-            "CREATE TABLE IF NOT EXISTS Ultroid (ultroidCli varchar(70))"
+            "CREATE TABLE IF NOT EXISTS Puii (puiiCli varchar(70))"
         )
         return True
 
@@ -303,7 +303,7 @@ class RedisDB(_BaseDatabase):
 
 class LocalDB(_BaseDatabase):
     def __init__(self):
-        self.db = Database("ultroid")
+        self.db = Database("puii")
         self.get = self.db.get
         self.set = self.db.set
         self.delete = self.db.delete
@@ -317,10 +317,10 @@ class LocalDB(_BaseDatabase):
         return self._cache.keys()
 
     def __repr__(self):
-        return f"<Ultroid.LocalDB\n -total_keys: {len(self.keys())}\n>"
+        return f"<Puii.LocalDB\n -total_keys: {len(self.keys())}\n>"
 
 
-def UltroidDB():
+def PuiiDB():
     _er = False
     from .. import HOSTED_ON
 

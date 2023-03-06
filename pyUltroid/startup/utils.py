@@ -32,12 +32,12 @@ def load_addons(plugin_name):
     base_name = plugin_name.split("/")[-1].split("\\")[-1].replace(".py", "")
     if base_name.startswith("__"):
         return
-    from pyUltroid import fns
+    from pyPuii import fns
 
-    from .. import HNDLR, LOGS, asst, udB, ultroid_bot
+    from .. import HNDLR, LOGS, asst, udB, puii_bot
     from .._misc import _supporter as config
     from .._misc._assistant import asst_cmd, callback, in_pattern
-    from .._misc._decorators import ultroid_cmd
+    from .._misc._decorators import puii_cmd
     from .._misc._supporter import Config, admin_cmd, sudo_cmd
     from .._misc._wrappers import eod, eor
     from ..configs import Var
@@ -48,19 +48,19 @@ def load_addons(plugin_name):
     mod = util.module_from_spec(spec)
     for path in configPaths:
         modules[path] = config
-    modules["pyUltroid.functions"] = fns
+    modules["pyPuii.functions"] = fns
     mod.LOG_CHANNEL = udB.get_key("LOG_CHANNEL")
     mod.udB = udB
     mod.asst = asst
     mod.tgbot = asst
-    mod.ultroid_bot = ultroid_bot
-    mod.ub = ultroid_bot
-    mod.bot = ultroid_bot
-    mod.ultroid = ultroid_bot
-    mod.borg = ultroid_bot
-    mod.telebot = ultroid_bot
-    mod.jarvis = ultroid_bot
-    mod.friday = ultroid_bot
+    mod.puii_bot = puii_bot
+    mod.ub = puii_bot
+    mod.bot = puii_bot
+    mod.puii = puii_bot
+    mod.borg = puii_bot
+    mod.telebot = puii_bot
+    mod.jarvis = puii_bot
+    mod.friday = puii_bot
     mod.eod = eod
     mod.edit_delete = eod
     mod.LOGS = LOGS
@@ -74,8 +74,8 @@ def load_addons(plugin_name):
     mod.eor = eor
     mod.edit_or_reply = eor
     mod.asst_cmd = asst_cmd
-    mod.ultroid_cmd = ultroid_cmd
-    mod.on_cmd = ultroid_cmd
+    mod.puii_cmd = puii_cmd
+    mod.on_cmd = puii_cmd
     mod.callback = callback
     mod.Redis = udB.get_key
     mod.admin_cmd = admin_cmd

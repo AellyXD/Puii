@@ -43,10 +43,10 @@ if run_as_module:
     from telethon import __version__
     from telethon.tl.alltlobjects import LAYER
 
-    from ..version import __version__ as __pyUltroid__
-    from ..version import ultroid_version
+    from ..version import __version__ as __pyPuii__
+    from ..version import puii_version
 
-    file = f"ultroid{sys.argv[6]}.log" if len(sys.argv) > 6 else "ultroid.log"
+    file = f"puii{sys.argv[6]}.log" if len(sys.argv) > 6 else "puii.log"
 
     if os.path.exists(file):
         os.remove(file)
@@ -89,9 +89,9 @@ if run_as_module:
     )
 
     LOGS.info(f"Python version - {platform.python_version()}")
-    LOGS.info(f"py-Ultroid Version - {__pyUltroid__}")
+    LOGS.info(f"py-Puii Version - {__pyPuii__}")
     LOGS.info(f"Telethon Version - {__version__} [Layer: {LAYER}]")
-    LOGS.info(f"Ultroid Version - {ultroid_version} [{HOSTED_ON}]")
+    LOGS.info(f"Puii Version - {puii_version} [{HOSTED_ON}]")
 
     try:
         from safety.tools import *

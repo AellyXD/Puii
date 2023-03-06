@@ -66,7 +66,7 @@ class Loader:
                 continue
             except Exception as exc:
                 modl = None
-                self._logger.error(f"pyUltroid - {self.key} - ERROR - {plugin}")
+                self._logger.error(f"pyPuii - {self.key} - ERROR - {plugin}")
                 self._logger.exception(exc)
                 continue
             if _single and log:
