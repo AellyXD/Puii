@@ -2,7 +2,7 @@
 import os
 from time import sleep
 
-ULTROID = r""" ____  __  __  ____  ____ 
+PUII = r""" ____  __  __  ____  ____ 
 
 (  _ \(  )(  )(_  _)(_  _)
 
