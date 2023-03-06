@@ -14,7 +14,7 @@ from logging import WARNING
 from random import choice, randrange, shuffle
 from traceback import format_exc
 
-from pyUltroid.exceptions import DependencyMissingError
+from pyPuii.exceptions import DependencyMissingError
 
 try:
     from aiohttp import ContentTypeError
@@ -61,7 +61,7 @@ except ImportError:
 
 
 async def randomchannel(
-    tochat, channel, range1, range2, caption=None, client=ultroid_bot
+    tochat, channel, range1, range2, caption=None, client=puii_bot
 ):
     do = randrange(range1, range2)
     async for x in client.iter_messages(channel, add_offset=do, limit=1):
@@ -157,8 +157,8 @@ async def allcmds(event, telegraph):
         for zz in LIST[z]:
             txt += HNDLR + zz + "\n"
         txt += "\n\n"
-    t = telegraph.create_page(title="Ultroid All Cmds", content=[txt])
-    await eor(event, f"All Ultroid Cmds : [Click Here]({t['url']})", link_preview=False)
+    t = telegraph.create_page(title="Puii All Cmds", content=[txt])
+    await eor(event, f"All Puii Cmds : [Click Here]({t['url']})", link_preview=False)
 
 
 async def ReTrieveFile(input_file_name):
