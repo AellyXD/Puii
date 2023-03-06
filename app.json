@@ -1,17 +1,17 @@
 {
-    "name": "Ultroid UserBot",
-    "description": "Pluggable telegram userbot, made in python using Telethon.",
-    "logo": "https://graph.org/file/031957757a4f6a5191040.jpg",
+    "name": "Puii",
+    "description": "Pluggable telegram userbot, made in python using Telethon & Pyrogram.",
+    "logo": "https://graph.org/file/08c6b87d3c9257d63438c.jpg",
     "keywords": [
         "Telethon",
         "telegram",
         "userbot",
         "python",
-        "ultroid"
+        "puii"
     ],
-    "repository": "https://github.com/TeamUltroid/Ultroid",
-    "website": "https://ultroid.tech",
-    "success_url": "https://t.me/TeamUltroid",
+    "repository": "https://github.com/AellyXD/Puii",
+    "website": "https://aelly.tk",
+    "success_url": "https://t.me/AellyXD",
     "stack": "container",
     "env": {
         "API_ID": {
