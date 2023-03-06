@@ -12,9 +12,9 @@ from telethon import Button, events
 from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
 from telethon.utils import get_display_name
 
-from pyUltroid._misc import SUDO_M, owner_and_sudos
-from pyUltroid.dB.base import KeyManager
-from pyUltroid.fns.helper import inline_mention
+from pyPuii._misc import SUDO_M, owner_and_sudos
+from pyPuii.dB.base import KeyManager
+from pyPuii.fns.helper import inline_mention
 from strings import get_string
 
 from . import *
@@ -29,7 +29,7 @@ if Owner_info_msg is None:
 
 **Message Forwards** - {udB.get_key("PMBOT")}
 
-**Ultroid [v{ultroid_version}](https://github.com/TeamUltroid/Ultroid), powered by @TeamUltroid**
+**Puii [v{puii_version}](https://github.com/AellyXD/Puii), powered by @AellyXD**
 """
 
 
@@ -65,10 +65,10 @@ _start = [
 @callback("ownerinfo")
 async def own(event):
     msg = Owner_info_msg.format(
-        mention=event.sender.mention, me=inline_mention(ultroid_bot.me)
+        mention=event.sender.mention, me=inline_mention(puii_bot.me)
     )
     if custom_info:
-        msg += "\n\n• Powered by **@TeamUltroid**"
+        msg += "\n\n• Powered by **@AellyXD**"
     await event.edit(
         msg,
         buttons=[Button.inline("Close", data="closeit")],
@@ -85,7 +85,7 @@ async def closet(lol):
 
 
 @asst_cmd(pattern="start( (.*)|$)", forwards=False, func=lambda x: not x.is_group)
-async def ultroid(event):
+async def puii(event):
     args = event.pattern_match.group(1).strip()
     keym = KeyManager("BOT_USERS", cast=list)
     if not keym.contains(event.sender_id) and event.sender_id not in owner_and_sudos():
@@ -105,7 +105,7 @@ async def ultroid(event):
             )
     if event.sender_id not in SUDO_M.fullsudos:
         ok = ""
-        me = inline_mention(ultroid_bot.me)
+        me = inline_mention(puii_bot.me)
         mention = inline_mention(event.sender)
         if args and args != "set":
             await get_stored_file(event, args)
@@ -113,7 +113,7 @@ async def ultroid(event):
             if udB.get_key("PMBOT"):
                 ok = "You can contact my master using this bot!!\n\nSend your Message, I will Deliver it To Master."
             await event.reply(
-                f"Hey there {mention}, this is Ultroid Assistant of {me}!\n\n{ok}",
+                f"Hey there {mention}, this is Puii Assistant of {me}!\n\n{ok}",
                 file=udB.get_key("STARTMEDIA"),
                 buttons=[Button.inline("Info.", data="ownerinfo")]
                 if Owner_info_msg
@@ -150,7 +150,7 @@ async def ekekdhdb(e):
 
 
 @callback("mainmenu", owner=True, func=lambda x: not x.is_group)
-async def ultroid(event):
+async def puii(event):
     await event.edit(
         get_string("ast_3").format(OWNER_NAME),
         buttons=_start,
@@ -160,7 +160,7 @@ async def ultroid(event):
 @callback("stat", owner=True)
 async def botstat(event):
     ok = len(udB.get_key("BOT_USERS") or [])
-    msg = """Ultroid Assistant - Stats
+    msg = """Puii Assistant - Stats
 Total Users - {}""".format(
         ok,
     )

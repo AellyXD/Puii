@@ -8,16 +8,16 @@
 from telethon import Button, custom
 
 from plugins import ATRA_COL, InlinePlugin
-from pyUltroid import *
-from pyUltroid import _ult_cache
-from pyUltroid._misc import owner_and_sudos
-from pyUltroid._misc._assistant import asst_cmd, callback, in_pattern
-from pyUltroid.fns.helper import *
-from pyUltroid.fns.tools import get_stored_file
+from pyPuii import *
+from pyPuii import _ult_cache
+from pyPuii._misc import owner_and_sudos
+from pyPuii._misc._assistant import asst_cmd, callback, in_pattern
+from pyPuii.fns.helper import *
+from pyPuii.fns.tools import get_stored_file
 from strings import get_languages, get_string
 
-OWNER_NAME = ultroid_bot.full_name
-OWNER_ID = ultroid_bot.uid
+OWNER_NAME = puii_bot.full_name
+OWNER_ID = puii_bot.uid
 
 AST_PLUGINS = {}
 

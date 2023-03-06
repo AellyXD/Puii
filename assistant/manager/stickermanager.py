@@ -18,8 +18,8 @@ from telethon.tl.types import InputStickerSetItem as SetItem
 from telethon.tl.types import InputStickerSetShortName, User
 from telethon.utils import get_display_name, get_input_document
 
-from pyUltroid.fns.misc import Quotly
-from pyUltroid.fns.tools import TgConverter
+from pyPuii.fns.misc import Quotly
+from pyPuii.fns.tools import TgConverter
 
 from . import LOGS, asst, asst_cmd, udB
 
@@ -97,7 +97,7 @@ async def kang_cmd(ult):
                     stickers=[SetItem(file, emoji=emoji)],
                     videos=video,
                     animated=animated,
-                    software="@TeamUltroid",
+                    software="@AellyXD",
                 )
             )
         except Exception as er:

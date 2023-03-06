@@ -9,12 +9,12 @@ import re
 
 from telethon.errors.rpcerrorlist import UserNotParticipantError
 
-from pyUltroid import _ult_cache
+from pyPuii import _ult_cache
 
 from . import *
 
 
-@ultroid_cmd(pattern="d(kick|ban)", manager=True, require="ban_users")
+@puii_cmd(pattern="d(kick|ban)", manager=True, require="ban_users")
 async def dowj(e):
     replied = await e.get_reply_message()
     if replied:
