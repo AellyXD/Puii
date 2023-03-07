@@ -11,8 +11,8 @@ __doc__ = get_help("help_asstcmd")
 
 import os
 
-from pyUltroid.dB.asstcmd_db import add_cmd, cmd_reply, list_cmds, rem_cmd
-from pyUltroid.fns.tools import create_tl_btn, format_btn, get_msg_button
+from pyPuii.dB.asstcmd_db import add_cmd, cmd_reply, list_cmds, rem_cmd
+from pyPuii.fns.tools import create_tl_btn, format_btn, get_msg_button
 
 try:
     from telegraph import upload_file as uf
@@ -20,10 +20,10 @@ except ImportError:
     uf = None
 from telethon import events, utils
 
-from . import asst, get_string, mediainfo, udB, ultroid_cmd
+from . import asst, get_string, mediainfo, udB, puii_cmd
 
 
-@ultroid_cmd(pattern="addcmd( (.*)|$)")
+@puii_cmd(pattern="addcmd( (.*)|$)")
 async def ac(e):
     wrd = (e.pattern_match.group(1).strip()).lower()
     wt = await e.get_reply_message()
@@ -69,7 +69,7 @@ async def ac(e):
     await e.eor(get_string("asstcmd_4").format(wrd))
 
 
-@ultroid_cmd(pattern="remcmd( (.*)|$)")
+@puii_cmd(pattern="remcmd( (.*)|$)")
 async def rc(e):
     wrd = (e.pattern_match.group(1).strip()).lower()
     if not wrd:
@@ -79,7 +79,7 @@ async def rc(e):
     await e.eor(get_string("asstcmd_3").format(wrd))
 
 
-@ultroid_cmd(pattern="listcmd$")
+@puii_cmd(pattern="listcmd$")
 async def lscmd(e):
     if list_cmds():
         ok = get_string("asstcmd_6")

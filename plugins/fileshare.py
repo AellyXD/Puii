@@ -11,13 +11,13 @@ __doc__ = get_help("help_fileshare")
 
 import os
 
-from pyUltroid.dB.filestore_db import del_stored, get_stored_msg, list_all_stored_msgs
-from pyUltroid.fns.tools import get_file_link
+from pyPuii.dB.filestore_db import del_stored, get_stored_msg, list_all_stored_msgs
+from pyPuii.fns.tools import get_file_link
 
-from . import HNDLR, asst, get_string, in_pattern, udB, ultroid_bot, ultroid_cmd
+from . import HNDLR, asst, get_string, in_pattern, udB, puii_bot, puii_cmd
 
 
-@ultroid_cmd(pattern="store$")
+@puii_cmd(pattern="store$")
 async def filestoreplg(event):
     msg = await event.get_reply_message()
     if not msg:
@@ -31,7 +31,7 @@ async def filestoreplg(event):
     )
 
 
-@ultroid_cmd("delstored ?(.*)")
+@puii_cmd("delstored ?(.*)")
 async def _(event):
     match = event.pattern_match.group(1)
     if not match:
@@ -48,11 +48,11 @@ async def _(event):
             "`Message/Media of provided link was already deleted.`", time=5
         )
     del_stored(match[1])
-    await ultroid_bot.delete_messages(udB.get_key("LOG_CHANNEL"), int(msg_id))
+    await puii_bot.delete_messages(udB.get_key("LOG_CHANNEL"), int(msg_id))
     await event.eor("__Deleted__")
 
 
-@ultroid_cmd("liststored$")
+@puii_cmd("liststored$")
 async def liststored(event):
     files = list_all_stored_msgs()
     if not files:

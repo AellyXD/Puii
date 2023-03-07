@@ -64,11 +64,11 @@ from . import (
     quotly,
     types,
     udB,
-    ultroid_cmd,
+    puii_cmd,
 )
 
 
-@ultroid_cmd(pattern="packkang")
+@puii_cmd(pattern="packkang")
 async def pack_kangish(_):
     _e = await _.get_reply_message()
     local = None
@@ -81,7 +81,7 @@ async def pack_kangish(_):
     elif not (_e and _e.sticker and _e.file.mime_type == "image/webp"):
         return await _.eor(get_string("sts_4"))
     msg = await _.eor(get_string("com_1"))
-    _packname = cmdtext or f"Ultroid Kang Pack By {_.sender_id}"
+    _packname = cmdtext or f"Puii Kang Pack By {_.sender_id}"
     typee = None
     if not local:
         _id = _e.media.document.attributes[1].stickerset.id
@@ -144,13 +144,13 @@ async def pack_kangish(_):
     )
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="kang",
 )
 async def hehe(args):
-    ultroid_bot = args.client
+    puii_bot = args.client
     xx = await args.eor(get_string("com_1"))
-    user = ultroid_bot.me
+    user = puii_bot.me
     username = user.username
     username = f"@{username}" if username else user.first_name
     message = await args.get_reply_message()
@@ -161,10 +161,10 @@ async def hehe(args):
         return await xx.eor(get_string("sts_6"))
     if message.photo:
         photo = io.BytesIO()
-        photo = await ultroid_bot.download_media(message.photo, photo)
+        photo = await puii_bot.download_media(message.photo, photo)
     elif message.file and "image" in message.file.mime_type.split("/"):
         photo = io.BytesIO()
-        await ultroid_bot.download_file(message.media.document, photo)
+        await puii_bot.download_file(message.media.document, photo)
         if (
             DocumentAttributeFilename(file_name="sticker.webp")
             in message.media.document.attributes
@@ -182,7 +182,7 @@ async def hehe(args):
             cv2.imwrite("ult.webp", lol)
             photo = "ult.webp"
     elif message.file and "tgsticker" in message.file.mime_type:
-        await ultroid_bot.download_file(
+        await puii_bot.download_file(
             message.media.document,
             "AnimatedSticker.tgs",
         )
@@ -207,7 +207,7 @@ async def hehe(args):
         if not emoji:
             emoji = "🏵"
         if len(splat) == 3:
-            pack = splat[2]  # User sent ultroid_both
+            pack = splat[2]  # User sent puii_both
             emoji = splat[1]
         elif len(splat) == 2:
             if splat[1].isnumeric():
@@ -240,12 +240,12 @@ async def hehe(args):
             "  A <strong>Telegram</strong> user has created the <strong>Sticker&nbsp;Set</strong>."
             not in htmlstr
         ):
-            async with ultroid_bot.conversation("@Stickers") as conv:
+            async with puii_bot.conversation("@Stickers") as conv:
                 try:
                     await conv.send_message("/addsticker")
                 except YouBlockedUserError:
                     LOGS.info("Unblocking @Stickers for kang...")
-                    await ultroid_bot(functions.contacts.UnblockRequest("stickers"))
+                    await puii_bot(functions.contacts.UnblockRequest("stickers"))
                     await conv.send_message("/addsticker")
                 await conv.get_response()
                 await conv.send_message(packname)
@@ -322,10 +322,10 @@ async def hehe(args):
                 await conv.get_response()
                 await conv.send_message("/done")
                 await conv.get_response()
-                await ultroid_bot.send_read_acknowledge(conv.chat_id)
+                await puii_bot.send_read_acknowledge(conv.chat_id)
         else:
             await xx.edit("`Brewing a new Pack...`")
-            async with ultroid_bot.conversation("Stickers") as conv:
+            async with puii_bot.conversation("Stickers") as conv:
                 await conv.send_message(cmd)
                 await conv.get_response()
                 await conv.send_message(packnick)
@@ -357,7 +357,7 @@ async def hehe(args):
                 await conv.get_response()
                 await conv.send_message(packname)
                 await conv.get_response()
-                await ultroid_bot.send_read_acknowledge(conv.chat_id)
+                await puii_bot.send_read_acknowledge(conv.chat_id)
         await xx.edit(
             get_string("sts_12").format(emoji, packname),
             parse_mode="md",
@@ -368,7 +368,7 @@ async def hehe(args):
             pass
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="round$",
 )
 async def ultdround(event):
@@ -405,16 +405,16 @@ async def ultdround(event):
     os.remove("ult.webp")
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="destroy$",
 )
 async def ultdestroy(event):
     ult = await event.get_reply_message()
     if not (ult and ult.media and "animated" in mediainfo(ult.media)):
         return await event.eor(get_string("sts_2"))
-    await event.client.download_media(ult, "ultroid.tgs")
+    await event.client.download_media(ult, "puii.tgs")
     xx = await event.eor(get_string("com_1"))
-    await bash("lottie_convert.py ultroid.tgs json.json")
+    await bash("lottie_convert.py puii.tgs json.json")
     with open("json.json") as json:
         jsn = json.read()
     jsn = (
@@ -433,11 +433,11 @@ async def ultdestroy(event):
         .replace("[9]", "[110]")
     )
     open("json.json", "w").write(jsn)
-    file = await con.animated_sticker("json.json", "ultroid.tgs")
+    file = await con.animated_sticker("json.json", "puii.tgs")
     if file:
         await event.client.send_file(
             event.chat_id,
-            file="ultroid.tgs",
+            file="puii.tgs",
             force_document=False,
             reply_to=event.reply_to_msg_id,
         )
@@ -445,7 +445,7 @@ async def ultdestroy(event):
     os.remove("json.json")
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="tiny$",
 )
 async def ultiny(event):
@@ -455,7 +455,7 @@ async def ultiny(event):
         return
     xx = await event.eor(get_string("com_1"))
     ik = await reply.download_media()
-    im1 = Image.open("resources/extras/ultroid_blank.png")
+    im1 = Image.open("resources/extras/puii_blank.png")
     if ik.endswith(".tgs"):
         await con.animated_sticker(ik, "json.json")
         with open("json.json") as json:

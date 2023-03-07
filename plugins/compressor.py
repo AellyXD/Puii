@@ -19,7 +19,7 @@ from datetime import datetime as dt
 from telethon.errors.rpcerrorlist import MessageNotModifiedError
 from telethon.tl.types import DocumentAttributeVideo
 
-from pyUltroid.fns.tools import metadata
+from pyPuii.fns.tools import metadata
 
 from . import (
     ULTConfig,
@@ -30,12 +30,12 @@ from . import (
     math,
     mediainfo,
     time_formatter,
-    ultroid_cmd,
+    puii_cmd,
     uploader,
 )
 
 
-@ultroid_cmd(pattern="compress( (.*)|$)")
+@puii_cmd(pattern="compress( (.*)|$)")
 async def _(e):
     cr = e.pattern_match.group(1).strip()
     crf = 27

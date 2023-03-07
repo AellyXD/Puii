@@ -15,14 +15,14 @@ import io
 
 from telethon.utils import get_display_name
 
-from pyUltroid.dB.base import KeyManager
+from pyPuii.dB.base import KeyManager
 
-from . import HNDLR, LOGS, eor, get_string, udB, ultroid_bot, ultroid_cmd
+from . import HNDLR, LOGS, eor, get_string, udB, puii_bot, puii_cmd
 
 KeyM = KeyManager("BROADCAST", cast=list)
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="addch( (.*)|$)",
     allow_sudo=False,
 )
@@ -77,7 +77,7 @@ async def broadcast_adder(event):
     await x.delete()
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="remch( (.*)|$)",
     allow_sudo=False,
 )
@@ -98,7 +98,7 @@ async def broadcast_remover(event):
     await x.delete()
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="listchannels$",
 )
 async def list_all(event):
@@ -131,14 +131,14 @@ async def list_all(event):
         await x.edit(msg)
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="forward$",
     allow_sudo=False,
 )
 async def forw(event):
     if not event.is_reply:
         return await event.eor(get_string("ex_1"))
-    ultroid_bot = event.client
+    puii_bot = event.client
     channels = KeyM.get()
     x = await event.eor("Sending...")
     if not channels:
@@ -149,14 +149,14 @@ async def forw(event):
     error_count = 0
     for channel in channels:
         try:
-            await ultroid_bot.forward_messages(channel, previous_message)
+            await puii_bot.forward_messages(channel, previous_message)
             sent_count += 1
             await x.edit(
                 f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}",
             )
         except Exception:
             try:
-                await ultroid_bot.send_message(
+                await puii_bot.send_message(
                     udB.get_key("LOG_CHANNEL"),
                     f"Error in sending at {channel}.",
                 )
@@ -168,12 +168,12 @@ async def forw(event):
             )
     await x.edit(f"{sent_count} messages sent with {error_count} errors.")
     if error_count > 0:
-        await ultroid_bot.send_message(
+        await puii_bot.send_message(
             udB.get_key("LOG_CHANNEL"), f"{error_count} Errors"
         )
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="broadcast( (.*)|$)",
     allow_sudo=False,
 )
@@ -194,13 +194,13 @@ async def sending(event):
             sent_count = 0
             for channel in channels:
                 try:
-                    await ultroid_bot.send_message(channel, previous_message)
+                    await puii_bot.send_message(channel, previous_message)
                     sent_count += 1
                     await x.edit(
                         f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}",
                     )
                 except Exception as error:
-                    await ultroid_bot.send_message(
+                    await puii_bot.send_message(
                         udB.get_key("LOG_CHANNEL"),
                         f"Error in sending at {channel}.\n\n{error}",
                     )
@@ -210,7 +210,7 @@ async def sending(event):
                     )
             await x.edit(f"{sent_count} messages sent with {error_count} errors.")
             if error_count > 0:
-                await ultroid_bot.send_message(
+                await puii_bot.send_message(
                     udB.get_key("LOG_CHANNEL"),
                     f"{error_count} Errors",
                 )

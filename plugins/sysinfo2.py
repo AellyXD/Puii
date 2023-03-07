@@ -9,7 +9,7 @@
 from . import *
 from os import remove
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="osinfo$",
 )
 async def _(e):

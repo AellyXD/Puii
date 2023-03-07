@@ -1,9 +1,9 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2022 TeamUltroid
+# Puii - UserBot
+# Copyright (C) 2021-2022 TeamPuii
 #
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
+# This file is a part of < https://github.com/TeamPuii/Puii/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+# <https://www.github.com/TeamPuii/Puii/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -42,7 +42,7 @@ import asyncio
 import re
 from os import remove
 
-from pyUltroid.dB import DEVLIST
+from pyPuii.dB import DEVLIST
 
 try:
     from tabulate import tabulate
@@ -58,7 +58,7 @@ from telethon.tl.functions.contacts import (
 from telethon.tl.functions.messages import ReportSpamRequest
 from telethon.utils import get_display_name, resolve_bot_file_id
 
-from pyUltroid.dB.base import KeyManager
+from pyPuii.dB.base import KeyManager
 
 from . import *
 
@@ -126,7 +126,7 @@ async def delete_pm_warn_msgs(chat: int):
 
 if udB.get_key("PMLOG"):
 
-    @ultroid_cmd(
+    @puii_cmd(
         pattern="logpm$",
     )
     async def _(e):
@@ -138,7 +138,7 @@ if udB.get_key("PMLOG"):
         Logm.remove(e.chat_id)
         return await e.eor("`Now I Will log msgs from here.`", time=3)
 
-    @ultroid_cmd(
+    @puii_cmd(
         pattern="nologpm$",
     )
     async def _(e):
@@ -150,7 +150,7 @@ if udB.get_key("PMLOG"):
         Logm.add(e.chat_id)
         return await e.eor("`Now I Won't log msgs from here.`", time=3)
 
-    @ultroid_bot.on(
+    @puii_bot.on(
         events.NewMessage(
             incoming=True,
             func=lambda e: e.is_private,
@@ -166,7 +166,7 @@ if udB.get_key("PMLOG"):
 if udB.get_key("PMSETTING"):
     if udB.get_key("AUTOAPPROVE"):
 
-        @ultroid_bot.on(
+        @puii_bot.on(
             events.NewMessage(
                 outgoing=True,
                 func=lambda e: e.is_private and e.out and not e.text.startswith(HNDLR),
@@ -181,7 +181,7 @@ if udB.get_key("PMSETTING"):
             keym.add(miss.id)
             await delete_pm_warn_msgs(miss.id)
             try:
-                await ultroid_bot.edit_folder(miss.id, folder=0)
+                await puii_bot.edit_folder(miss.id, folder=0)
             except BaseException:
                 pass
             try:
@@ -200,7 +200,7 @@ if udB.get_key("PMSETTING"):
             except MessageNotModifiedError:
                 pass
 
-    @ultroid_bot.on(
+    @puii_bot.on(
         events.NewMessage(
             incoming=True,
             func=lambda e: e.is_private
@@ -217,7 +217,7 @@ if udB.get_key("PMSETTING"):
         if not keym.contains(user.id) and event.text != UND:
             if Redis("MOVE_ARCHIVE"):
                 try:
-                    await ultroid_bot.edit_folder(user.id, folder=1)
+                    await puii_bot.edit_folder(user.id, folder=1)
                 except BaseException as er:
                     LOGS.info(er)
             if event.media and not udB.get_key("DISABLE_PMDEL"):
@@ -269,7 +269,7 @@ if udB.get_key("PMSETTING"):
                     )
                     update_pm(user.id, message_, wrn)
                     if inline_pm:
-                        results = await ultroid_bot.inline_query(
+                        results = await puii_bot.inline_query(
                             my_bot, f"ip_{user.id}"
                         )
                         try:
@@ -279,13 +279,13 @@ if udB.get_key("PMSETTING"):
                         except Exception as e:
                             LOGS.info(str(e))
                     elif PMPIC:
-                        _to_delete[user.id] = await ultroid_bot.send_file(
+                        _to_delete[user.id] = await puii_bot.send_file(
                             user.id,
                             PMPIC,
                             caption=message_,
                         )
                     else:
-                        _to_delete[user.id] = await ultroid_bot.send_message(
+                        _to_delete[user.id] = await puii_bot.send_message(
                             user.id, message_
                         )
 
@@ -305,7 +305,7 @@ if udB.get_key("PMSETTING"):
                     update_pm(user.id, message_, wrn)
                     if inline_pm:
                         try:
-                            results = await ultroid_bot.inline_query(
+                            results = await puii_bot.inline_query(
                                 my_bot, f"ip_{user.id}"
                             )
                             _to_delete[user.id] = await results[0].click(
@@ -314,13 +314,13 @@ if udB.get_key("PMSETTING"):
                         except Exception as e:
                             LOGS.info(str(e))
                     elif PMPIC:
-                        _to_delete[user.id] = await ultroid_bot.send_file(
+                        _to_delete[user.id] = await puii_bot.send_file(
                             user.id,
                             PMPIC,
                             caption=message_,
                         )
                     else:
-                        _to_delete[user.id] = await ultroid_bot.send_message(
+                        _to_delete[user.id] = await puii_bot.send_message(
                             user.id, message_
                         )
                 LASTMSG.update({user.id: event.text})
@@ -340,7 +340,7 @@ if udB.get_key("PMSETTING"):
                 update_pm(user.id, message_, wrn)
                 if inline_pm:
                     try:
-                        results = await ultroid_bot.inline_query(
+                        results = await puii_bot.inline_query(
                             my_bot, f"ip_{user.id}"
                         )
                         _to_delete[user.id] = await results[0].click(
@@ -349,13 +349,13 @@ if udB.get_key("PMSETTING"):
                     except Exception as e:
                         LOGS.info(str(e))
                 elif PMPIC:
-                    _to_delete[user.id] = await ultroid_bot.send_file(
+                    _to_delete[user.id] = await puii_bot.send_file(
                         user.id,
                         PMPIC,
                         caption=message_,
                     )
                 else:
-                    _to_delete[user.id] = await ultroid_bot.send_message(
+                    _to_delete[user.id] = await puii_bot.send_message(
                         user.id, message_
                     )
             LASTMSG.update({user.id: event.text})
@@ -375,15 +375,15 @@ if udB.get_key("PMSETTING"):
                         "PMPermit is messed! Pls restart the bot!!",
                     )
                     return LOGS.info("COUNT_PM is messed.")
-                await ultroid_bot(BlockRequest(user.id))
-                await ultroid_bot(ReportSpamRequest(peer=user.id))
+                await puii_bot(BlockRequest(user.id))
+                await puii_bot(ReportSpamRequest(peer=user.id))
                 await asst.edit_message(
                     udB.get_key("LOG_CHANNEL"),
                     _not_approved[user.id],
                     f"**{mention}** [`{user.id}`] was Blocked for spamming.",
                 )
 
-    @ultroid_cmd(pattern="(start|stop|clear)archive$", fullsudo=True)
+    @puii_cmd(pattern="(start|stop|clear)archive$", fullsudo=True)
     async def _(e):
         x = e.pattern_match.group(1).strip()
         if x == "start":
@@ -399,7 +399,7 @@ if udB.get_key("PMSETTING"):
             except Exception as mm:
                 await e.eor(str(mm), time=5)
 
-    @ultroid_cmd(pattern="(a|approve)(?: |$)", fullsudo=True)
+    @puii_cmd(pattern="(a|approve)(?: |$)", fullsudo=True)
     async def approvepm(apprvpm):
         if apprvpm.reply_to_msg_id:
             user = (await apprvpm.get_reply_message()).sender
@@ -450,7 +450,7 @@ if udB.get_key("PMSETTING"):
         else:
             await apprvpm.eor("`User may already be approved.`", time=5)
 
-    @ultroid_cmd(pattern="(da|disapprove)(?: |$)", fullsudo=True)
+    @puii_cmd(pattern="(da|disapprove)(?: |$)", fullsudo=True)
     async def disapprovepm(e):
         if e.reply_to_msg_id:
             user = (await e.get_reply_message()).sender
@@ -501,7 +501,7 @@ if udB.get_key("PMSETTING"):
             )
 
 
-@ultroid_cmd(pattern="block( (.*)|$)", fullsudo=True)
+@puii_cmd(pattern="block( (.*)|$)", fullsudo=True)
 async def blockpm(block):
     match = block.pattern_match.group(1).strip()
     if block.reply_to_msg_id:
@@ -544,7 +544,7 @@ async def blockpm(block):
         pass
 
 
-@ultroid_cmd(pattern="unblock( (.*)|$)", fullsudo=True)
+@puii_cmd(pattern="unblock( (.*)|$)", fullsudo=True)
 async def unblockpm(event):
     match = event.pattern_match.group(1).strip()
     reply = await event.get_reply_message()
@@ -606,7 +606,7 @@ async def unblockpm(event):
         pass
 
 
-@ultroid_cmd(pattern="listapproved$", owner=True)
+@puii_cmd(pattern="listapproved$", owner=True)
 async def list_approved(event):
     xx = await event.eor(get_string("com_1"))
     all = keym.get()
@@ -615,7 +615,7 @@ async def list_approved(event):
     users = []
     for i in all:
         try:
-            name = get_display_name(await ultroid_bot.get_entity(i))
+            name = get_display_name(await puii_bot.get_entity(i))
         except BaseException:
             name = ""
         users.append([name.strip(), str(i)])
@@ -640,7 +640,7 @@ async def list_approved(event):
     re.compile(
         b"approve_(.*)",
     ),
-    from_users=[ultroid_bot.uid],
+    from_users=[puii_bot.uid],
 )
 async def apr_in(event):
     uid = int(event.data_match.group(1).decode("UTF-8"))
@@ -649,11 +649,11 @@ async def apr_in(event):
     if not keym.contains(uid):
         keym.add(uid)
         try:
-            await ultroid_bot.edit_folder(uid, folder=0)
+            await puii_bot.edit_folder(uid, folder=0)
         except BaseException:
             pass
         try:
-            user = await ultroid_bot.get_entity(uid)
+            user = await puii_bot.get_entity(uid)
         except BaseException:
             return await event.delete()
         await event.edit(
@@ -684,14 +684,14 @@ async def apr_in(event):
     re.compile(
         b"disapprove_(.*)",
     ),
-    from_users=[ultroid_bot.uid],
+    from_users=[puii_bot.uid],
 )
 async def disapr_in(event):
     uid = int(event.data_match.group(1).decode("UTF-8"))
     if keym.contains(uid):
         keym.remove(uid)
         try:
-            user = await ultroid_bot.get_entity(uid)
+            user = await puii_bot.get_entity(uid)
         except BaseException:
             return await event.delete()
         await event.edit(
@@ -721,16 +721,16 @@ async def disapr_in(event):
     re.compile(
         b"block_(.*)",
     ),
-    from_users=[ultroid_bot.uid],
+    from_users=[puii_bot.uid],
 )
 async def blck_in(event):
     uid = int(event.data_match.group(1).decode("UTF-8"))
     try:
-        await ultroid_bot(BlockRequest(uid))
+        await puii_bot(BlockRequest(uid))
     except BaseException:
         pass
     try:
-        user = await ultroid_bot.get_entity(uid)
+        user = await puii_bot.get_entity(uid)
     except BaseException:
         return await event.delete()
     await event.edit(
@@ -745,16 +745,16 @@ async def blck_in(event):
     re.compile(
         b"unblock_(.*)",
     ),
-    from_users=[ultroid_bot.uid],
+    from_users=[puii_bot.uid],
 )
 async def unblck_in(event):
     uid = int(event.data_match.group(1).decode("UTF-8"))
     try:
-        await ultroid_bot(UnblockRequest(uid))
+        await puii_bot(UnblockRequest(uid))
     except BaseException:
         pass
     try:
-        user = await ultroid_bot.get_entity(uid)
+        user = await puii_bot.get_entity(uid)
     except BaseException:
         return await event.delete()
     await event.edit(
@@ -771,7 +771,7 @@ async def ytfuxist(e):
         await e.answer("Deleted.")
         await e.delete()
     except BaseException:
-        await ultroid_bot.delete_messages(e.chat_id, e.id)
+        await puii_bot.delete_messages(e.chat_id, e.id)
 
 
 @in_pattern(re.compile("ip_(.*)"), owner=True)
@@ -816,7 +816,7 @@ async def in_pm_ans(event):
                 await event.builder.document(
                     res,
                     title="Inline PmPermit",
-                    description="~ @TeamUltroid",
+                    description="~ @AellyXD",
                     text=msg_,
                     buttons=buttons,
                     link_preview=False,
@@ -833,17 +833,17 @@ async def in_pm_ans(event):
                 title="Inline PMPermit.",
                 type=_type,
                 text=msg_,
-                description="@TeamUltroid",
+                description="@AellyXD",
                 include_media=include_media,
                 buttons=buttons,
                 thumb=cont,
                 content=cont,
             )
         ]
-    await event.answer(res, switch_pm="• Ultroid •", switch_pm_param="start")
+    await event.answer(res, switch_pm="• Puii •", switch_pm_param="start")
 
 
-@callback(re.compile("admin_only(.*)"), from_users=[ultroid_bot.uid])
+@callback(re.compile("admin_only(.*)"), from_users=[puii_bot.uid])
 async def _admin_tools(event):
     chat = int(event.pattern_match.group(1).strip())
     await event.edit(

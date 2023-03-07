@@ -18,7 +18,7 @@ from pprint import pprint
 
 from telethon.utils import get_display_name
 
-from pyUltroid import _ignore_eval
+from pyPuii import _ignore_eval
 
 from . import *
 
@@ -32,7 +32,7 @@ from random import choice
 try:
     from yaml import safe_load
 except ImportError:
-    from pyUltroid.fns.tools import safe_load
+    from pyPuii.fns.tools import safe_load
 try:
     from telegraph import upload_file as uf
 except ImportError:
@@ -42,7 +42,7 @@ from telethon.tl import functions
 fn = functions
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="sysinfo$",
 )
 async def _(e):
@@ -61,7 +61,7 @@ async def _(e):
     remove("neo.txt")
 
 
-@ultroid_cmd(pattern="bash", fullsudo=True, only_devs=True)
+@puii_cmd(pattern="bash", fullsudo=True, only_devs=True)
 async def _(event):
     carb, rayso, yamlf = None, None, False
     try:
@@ -165,7 +165,7 @@ async def _(event):
 
 
 pp = pprint  # ignore: pylint
-bot = ultroid = ultroid_bot
+bot = puii = puii_bot
 
 
 class u:
@@ -196,7 +196,7 @@ def _parse_eval(value=None):
     return str(value)
 
 
-@ultroid_cmd(pattern="eval", fullsudo=True, only_devs=True)
+@puii_cmd(pattern="eval", fullsudo=True, only_devs=True)
 async def _(event):
     try:
         cmd = event.text.split(maxsplit=1)[1]
@@ -238,7 +238,7 @@ async def _(event):
             pass
     reply_to_id = event.reply_to_msg_id or event
     if any(item in cmd for item in KEEP_SAFE().All) and (
-        not (event.out or event.sender_id == ultroid_bot.uid)
+        not (event.out or event.sender_id == puii_bot.uid)
     ):
         warning = await event.forward_to(udB.get_key("LOG_CHANNEL"))
         await warning.reply(
@@ -347,7 +347,7 @@ int main(){
 """
 
 
-@ultroid_cmd(pattern="cpp", only_devs=True)
+@puii_cmd(pattern="cpp", only_devs=True)
 async def doie(e):
     match = e.text.split(" ", maxsplit=1)
     try:
@@ -358,20 +358,20 @@ async def doie(e):
     if "main(" not in match:
         new_m = "".join(" " * 4 + i + "\n" for i in match.split("\n"))
         match = DUMMY_CPP.replace("!code", new_m)
-    open("cpp-ultroid.cpp", "w").write(match)
-    m = await bash("g++ -o CppUltroid cpp-ultroid.cpp")
+    open("cpp-puii.cpp", "w").write(match)
+    m = await bash("g++ -o CppPuii cpp-puii.cpp")
     o_cpp = f"• **Eval-Cpp**\n`{match}`"
     if m[1]:
         o_cpp += f"\n\n**• Error :**\n`{m[1]}`"
         if len(o_cpp) > 3000:
-            os.remove("cpp-ultroid.cpp")
-            if os.path.exists("CppUltroid"):
-                os.remove("CppUltroid")
+            os.remove("cpp-puii.cpp")
+            if os.path.exists("CppPuii"):
+                os.remove("CppPuii")
             with BytesIO(str.encode(o_cpp)) as out_file:
                 out_file.name = "error.txt"
                 return await msg.reply(f"`{match}`", file=out_file)
         return await eor(msg, o_cpp)
-    m = await bash("./CppUltroid")
+    m = await bash("./CppPuii")
     if m[0] != "":
         o_cpp += f"\n\n**• Output :**\n`{m[0]}`"
     if m[1]:
@@ -382,5 +382,5 @@ async def doie(e):
             await msg.reply(f"`{match}`", file=out_file)
     else:
         await eor(msg, o_cpp)
-    os.remove("CppUltroid")
-    os.remove("cpp-ultroid.cpp")
+    os.remove("CppPuii")
+    os.remove("cpp-puii.cpp")

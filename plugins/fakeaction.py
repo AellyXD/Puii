@@ -12,12 +12,12 @@ __doc__ = get_help("help_fakeaction")
 import math
 import time
 
-from pyUltroid.fns.admins import ban_time
+from pyPuii.fns.admins import ban_time
 
-from . import asyncio, get_string, ultroid_cmd
+from . import asyncio, get_string, puii_cmd
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="f(typing|audio|contact|document|game|location|sticker|photo|round|video)( (.*)|$)"
 )
 async def _(e):

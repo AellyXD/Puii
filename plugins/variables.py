@@ -22,10 +22,10 @@
 
 import os
 
-from . import eor, get_string, udB, ultroid_cmd
+from . import eor, get_string, udB, puii_cmd
 
 
-@ultroid_cmd(pattern="get($| (.*))", fullsudo=True)
+@puii_cmd(pattern="get($| (.*))", fullsudo=True)
 async def get_var(event):
     try:
         opt = event.text.split(maxsplit=2)[1]

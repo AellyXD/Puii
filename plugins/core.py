@@ -1,4 +1,4 @@
-# Ultroid - UserBot
+# puii - UserBot
 # Copyright (C) 2021-2022 TeamUltroid
 #
 # This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
@@ -13,17 +13,17 @@ __doc__ = get_help("help_core")
 
 import os
 
-from pyUltroid.startup.loader import load_addons
+from pyPuii.startup.loader import load_addons
 
-from . import LOGS, async_searcher, eod, get_string, safeinstall, ultroid_cmd, un_plug
+from . import LOGS, async_searcher, eod, get_string, safeinstall, puii_cmd, un_plug
 
 
-@ultroid_cmd(pattern="install", fullsudo=True)
+@puii_cmd(pattern="install", fullsudo=True)
 async def install(event):
     await safeinstall(event)
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern=r"unload( (.*)|$)",
 )
 async def unload(event):
@@ -46,7 +46,7 @@ async def unload(event):
         await event.eor(f"**Nᴏ Pʟᴜɢɪɴ Nᴀᴍᴇᴅ** `{shortname}`", time=3)
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern=r"uninstall( (.*)|$)",
 )
 async def uninstall(event):
@@ -69,7 +69,7 @@ async def uninstall(event):
         return await event.eor(f"**Nᴏ Pʟᴜɢɪɴ Nᴀᴍᴇᴅ** `{shortname}`", time=3)
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern=r"load( (.*)|$)",
     fullsudo=True,
 )
@@ -94,7 +94,7 @@ async def load(event):
         )
 
 
-@ultroid_cmd(pattern="getaddons( (.*)|$)", fullsudo=True)
+@puii_cmd(pattern="getaddons( (.*)|$)", fullsudo=True)
 async def get_the_addons_lol(event):
     thelink = event.pattern_match.group(1).strip()
     xx = await event.eor(get_string("com_1"))

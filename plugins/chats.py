@@ -33,10 +33,10 @@ from telethon.tl.types import (
     UserStatusRecently,
 )
 
-from . import HNDLR, LOGS, asst, con, get_string, mediainfo, os, types, udB, ultroid_cmd
+from . import HNDLR, LOGS, asst, con, get_string, mediainfo, os, types, udB, puii_cmd
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="delchat",
     groups_only=True,
 )
@@ -58,7 +58,7 @@ async def _(e):
     )
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="getlink( (.*)|$)",
     groups_only=True,
     manager=True,
@@ -76,7 +76,7 @@ async def _(e):
     if match:
         split = match.split(maxsplit=1)
         request = split[0] in ["r", "request"]
-        title = "Created by Ultroid"
+        title = "Created by Puii"
         if len(split) > 1:
             match = split[1]
             spli = match.split(maxsplit=1)
@@ -119,7 +119,7 @@ async def _(e):
     await e.eor("`Failed to getlink!\nSeems like link is inaccessible to you...`")
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="create (b|g|c)(?: |$)(.*)",
 )
 async def _(e):
@@ -184,7 +184,7 @@ async def _(e):
 # ---------------------------------------------------------------- #
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="setgpic( (.*)|$)", admins_only=True, manager=True, require="change_info"
 )
 async def _(ult):
@@ -223,7 +223,7 @@ async def _(ult):
     os.remove(replfile)
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="delgpic( (.*)|$)", admins_only=True, manager=True, require="change_info"
 )
 async def _(ult):
@@ -239,7 +239,7 @@ async def _(ult):
     return await ult.eor(text, time=5)
 
 
-@ultroid_cmd(pattern="unbanall$", manager=True, admins_only=True, require="ban_users")
+@puii_cmd(pattern="unbanall$", manager=True, admins_only=True, require="ban_users")
 async def _(event):
     xx = await event.eor("Searching Participant Lists.")
     p = 0
@@ -259,7 +259,7 @@ async def _(event):
     await xx.eor(f"{title}: {p} unbanned", time=5)
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="rmusers( (.*)|$)",
     groups_only=True,
     admins_only=True,

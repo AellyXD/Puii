@@ -10,7 +10,7 @@ import os
 import time
 from datetime import datetime as dt
 
-from pyUltroid.fns.tools import set_attributes
+from pyPuii.fns.tools import set_attributes
 
 from . import (
     LOGS,
@@ -26,14 +26,14 @@ from . import (
     mediainfo,
     stdr,
     time_formatter,
-    ultroid_cmd,
+    puii_cmd,
     uploader,
 )
 
 __doc__ = get_help("help_audiotools")
 
 
-@ultroid_cmd(pattern="makevoice$")
+@puii_cmd(pattern="makevoice$")
 async def vnc(e):
     if not e.reply_to:
         return await eod(e, get_string("audiotools_1"))
@@ -60,7 +60,7 @@ async def vnc(e):
     os.remove("out.opus")
 
 
-@ultroid_cmd(pattern="atrim( (.*)|$)")
+@puii_cmd(pattern="atrim( (.*)|$)")
 async def trim_aud(e):
     sec = e.pattern_match.group(1).strip()
     if not sec or "-" not in sec:
@@ -122,7 +122,7 @@ async def trim_aud(e):
         await e.eor(get_string("audiotools_1"), time=5)
 
 
-@ultroid_cmd(pattern="extractaudio$")
+@puii_cmd(pattern="extractaudio$")
 async def ex_aud(e):
     reply = await e.get_reply_message()
     if not (reply and reply.media and mediainfo(reply.media).startswith("video")):

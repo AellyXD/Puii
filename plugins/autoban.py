@@ -11,9 +11,9 @@ __doc__ = get_help("help_autoban")
 
 from telethon import events
 
-from pyUltroid.dB.base import KeyManager
+from pyPuii.dB.base import KeyManager
 
-from . import LOGS, asst, ultroid_bot, ultroid_cmd
+from . import LOGS, asst, puii_bot, puii_cmd
 
 Keym = KeyManager("DND_CHATS", cast=list)
 
@@ -32,7 +32,7 @@ async def dnd_func(event):
     await event.delete()
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="autokick (on|off)$",
     admins_only=True,
     manager=True,
@@ -55,5 +55,5 @@ async def _(event):
 
 
 if Keym.get():
-    ultroid_bot.add_handler(dnd_func, events.ChatAction(func=join_func))
+    puii_bot.add_handler(dnd_func, events.ChatAction(func=join_func))
     asst.add_handler(dnd_func, events.ChatAction(func=join_func))

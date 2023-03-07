@@ -1,4 +1,4 @@
-# Ported From DarkCobra Originally By UNIBORG
+  # Ported From DarkCobra Originally By UNIBORG
 #
 # Ultroid - UserBot
 #
@@ -23,7 +23,7 @@ from . import *
 
 
 temxt = (
-    "**Ultroid Speedtest completed in {0} seconds.**\n\n" \
+    "**Puii Speedtest completed in {0} seconds.**\n\n" \
     "**Download:**  `{1}` \n" \
     "**Upload:**  `{2}` \n" \
     "**Ping:**  `{3} ms` \n" \
@@ -31,10 +31,10 @@ temxt = (
 )
 
 
-@ultroid_cmd(pattern="speedtest ?(.*)")
+@puii_cmd(pattern="speedtest ?(.*)")
 async def speemdtest(event):
     args = event.pattern_match.group(1)
-    xx = await eor(event, "`Calculating your Ultroid's Server Speed ...`")
+    xx = await eor(event, "`Calculating your Puii's Server Speed ...`")
     start = datetime.now()
     s = speedtest.Speedtest()
     s.get_best_server()

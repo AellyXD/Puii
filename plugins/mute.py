@@ -29,13 +29,13 @@
 from telethon import events
 from telethon.utils import get_display_name
 
-from pyUltroid.dB.mute_db import is_muted, mute, unmute
-from pyUltroid.fns.admins import ban_time
+from pyPuii.dB.mute_db import is_muted, mute, unmute
+from pyPuii.fns.admins import ban_time
 
-from . import asst, eod, get_string, inline_mention, ultroid_bot, ultroid_cmd
+from . import asst, eod, get_string, inline_mention, puii_bot, puii_cmd
 
 
-@ultroid_bot.on(events.NewMessage(incoming=True))
+@puii_bot.on(events.NewMessage(incoming=True))
 async def watcher(event):
     if is_muted(event.chat_id, event.sender_id):
         await event.delete()
@@ -43,7 +43,7 @@ async def watcher(event):
         await event.delete()
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="dmute( (.*)|$)",
 )
 async def startmute(event):
@@ -56,7 +56,7 @@ async def startmute(event):
     elif event.reply_to_msg_id:
         reply = await event.get_reply_message()
         userid = reply.sender_id
-        if reply.out or userid in [ultroid_bot.me.id, asst.me.id]:
+        if reply.out or userid in [puii_bot.me.id, asst.me.id]:
             return await xx.eor("`You cannot mute yourself or your assistant bot.`")
     elif event.is_private:
         userid = event.chat_id
@@ -74,7 +74,7 @@ async def startmute(event):
     await xx.eor("`Successfully muted...`", time=3)
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="undmute( (.*)|$)",
 )
 async def endmute(event):
@@ -96,7 +96,7 @@ async def endmute(event):
     await xx.eor("`Successfully unmuted...`", time=3)
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="tmute",
     groups_only=True,
     manager=True,
@@ -122,7 +122,7 @@ async def _(e):
         name = (await e.client.get_entity(userid)).first_name
     else:
         return await xx.eor(get_string("tban_1"), time=3)
-    if userid == ultroid_bot.uid:
+    if userid == puii_bot.uid:
         return await xx.eor("`I can't mute myself.`", time=3)
     try:
         bun = ban_time(tme)
@@ -141,7 +141,7 @@ async def _(e):
         await xx.eor(f"`{m}`", time=5)
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="unmute( (.*)|$)",
     admins_only=True,
     manager=True,
@@ -175,7 +175,7 @@ async def _(e):
         await xx.eor(f"`{m}`", time=5)
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="mute( (.*)|$)", admins_only=True, manager=True, require="ban_users"
 )
 async def _(e):
@@ -193,7 +193,7 @@ async def _(e):
             return await xx.edit(str(x))
     else:
         return await xx.eor(get_string("tban_1"), time=3)
-    if userid == ultroid_bot.uid:
+    if userid == puii_bot.uid:
         return await xx.eor("`I can't mute myself.`", time=3)
     try:
         await e.client.edit_permissions(

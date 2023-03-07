@@ -19,12 +19,12 @@
 
 from telethon.tl.types import User
 
-from pyUltroid._misc import sudoers
+from pyPuii._misc import sudoers
 
-from . import get_string, inline_mention, udB, ultroid_bot, ultroid_cmd
+from . import get_string, inline_mention, udB, puii_bot, puii_cmd
 
 
-@ultroid_cmd(pattern="addsudo( (.*)|$)", fullsudo=True)
+@puii_cmd(pattern="addsudo( (.*)|$)", fullsudo=True)
 async def _(ult):
     inputs = ult.pattern_match.group(1).strip()
     if ult.reply_to_msg_id:
@@ -51,7 +51,7 @@ async def _(ult):
     if name and isinstance(name, User) and (name.bot or name.verified):
         return await ult.eor(get_string("sudo_4"))
     name = inline_mention(name) if name else f"`{id}`"
-    if id == ultroid_bot.uid:
+    if id == puii_bot.uid:
         mmm = get_string("sudo_2")
     elif id in sudoers():
         mmm = f"{name} `is already a SUDO User ...`"
@@ -64,7 +64,7 @@ async def _(ult):
     await ult.eor(mmm, time=5)
 
 
-@ultroid_cmd(pattern="delsudo( (.*)|$)", fullsudo=True)
+@puii_cmd(pattern="delsudo( (.*)|$)", fullsudo=True)
 async def _(ult):
     inputs = ult.pattern_match.group(1).strip()
     if ult.reply_to_msg_id:
@@ -99,7 +99,7 @@ async def _(ult):
     await ult.eor(mmm, time=5)
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="listsudo$",
 )
 async def _(ult):
@@ -118,7 +118,7 @@ async def _(ult):
             msg += f"• `{i}` -> Invalid User\n"
     m = udB.get_key("SUDO") or True
     if not m:
-        m = "[False](https://graph.org/Ultroid-04-06)"
+        m = "[False](https://graph.org/Puii-03-06)"
     return await ult.eor(
         f"**SUDO MODE : {m}\n\nList of SUDO Users :**\n{msg}", link_preview=False
     )

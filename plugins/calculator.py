@@ -12,7 +12,7 @@ __doc__ = get_help("help_calculator")
 
 import re
 
-from . import Button, asst, callback, get_string, in_pattern, udB, ultroid_cmd
+from . import Button, asst, callback, get_string, in_pattern, udB, puii_cmd
 
 CALC = {}
 
@@ -43,7 +43,7 @@ lst = list(zip(tultd[::4], tultd[1::4], tultd[2::4], tultd[3::4]))
 lst.append([Button.inline("=", data="calc=")])
 
 
-@ultroid_cmd(pattern="calc")
+@puii_cmd(pattern="calc")
 async def icalc(e):
     udB.del_key("calc")
     if e.client._bot:

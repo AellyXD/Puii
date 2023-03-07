@@ -63,7 +63,7 @@ from telethon.tl.types import (
     DocumentAttributeVideo,
 )
 
-from pyUltroid.fns.tools import metadata, translate
+from pyPuii.fns.tools import metadata, translate
 
 from . import (
     HNDLR,
@@ -78,10 +78,10 @@ from . import (
     get_string,
 )
 from . import humanbytes as hb
-from . import inline_mention, is_url_ok, json_parser, mediainfo, ultroid_cmd
+from . import inline_mention, is_url_ok, json_parser, mediainfo, puii_cmd
 
 
-@ultroid_cmd(pattern="tr( (.*)|$)", manager=True)
+@puii_cmd(pattern="tr( (.*)|$)", manager=True)
 async def _(event):
     input = event.pattern_match.group(1).strip().split(maxsplit=1)
     txt = input[1] if len(input) > 1 else None
@@ -106,7 +106,7 @@ async def _(event):
         await event.eor(str(exc), time=5)
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="id( (.*)|$)",
     manager=True,
 )
@@ -132,7 +132,7 @@ async def _(event):
     await ult.eor(data)
 
 
-@ultroid_cmd(pattern="bots( (.*)|$)", groups_only=True, manager=True)
+@puii_cmd(pattern="bots( (.*)|$)", groups_only=True, manager=True)
 async def _(ult):
     mentions = "• **Bots in this Chat**: \n"
     if input_str := ult.pattern_match.group(1).strip():
@@ -157,7 +157,7 @@ async def _(ult):
     await ult.eor(mentions)
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="hl( (.*)|$)",
 )
 async def _(ult):
@@ -174,7 +174,7 @@ async def _(ult):
     await ult.eor(f"[{text}]({input_})", link_preview=False)
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="circle$",
 )
 async def _(e):
@@ -254,7 +254,7 @@ FilesEMOJI = {
 }
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="ls( (.*)|$)",
 )
 async def _(e):
@@ -338,7 +338,7 @@ async def _(e):
         await e.delete()
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="sg( (.*)|$)",
 )
 async def lastname(steal):
@@ -389,7 +389,7 @@ async def lastname(steal):
         await lol.edit("Error: @SangMataInfo_bot is not responding!.")
 
 
-@ultroid_cmd(pattern="webshot( (.*)|$)")
+@puii_cmd(pattern="webshot( (.*)|$)")
 async def webss(event):
     xx = await event.eor(get_string("com_1"))
     xurl = event.pattern_match.group(1).strip()
@@ -437,7 +437,7 @@ async def webss(event):
     await xx.delete()
 
 
-@ultroid_cmd(pattern="shorturl")
+@puii_cmd(pattern="shorturl")
 async def magic(event):
     try:
         match = event.text.split(maxsplit=1)[1].strip()
@@ -448,7 +448,7 @@ async def magic(event):
         "id": match[1] if len(match) > 1 else secrets.token_urlsafe(6),
     }
     data = await async_searcher(
-        "https://tiny.ultroid.tech/api/new",
+        "https://t.me/kkara9009",
         data=data,
         post=True,
         re_json=True,
@@ -457,5 +457,5 @@ async def magic(event):
     if not response.get("status"):
         return await event.eor(f'**ERROR :** `{response["message"]}`')
     await event.eor(
-        f"• **Ultroid Tiny**\n• Given Url : {url}\n• Shorten Url : {data['response']['tinyUrl']}"
+        f"• **Puii Tiny**\n• Given Url : {url}\n• Shorten Url : {data['response']['tinyUrl']}"
     )

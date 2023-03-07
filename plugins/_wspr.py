@@ -24,14 +24,14 @@ from . import (
     get_string,
     in_pattern,
     inline_mention,
-    ultroid_bot,
-    ultroid_cmd,
+    puii_bot,
+    puii_cmd,
 )
 
 buddhhu = {}
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="wspr( (.*)|$)",
 )
 async def _(e):
@@ -62,7 +62,7 @@ async def _(e):
         query = zzz[1]
         if query.isdigit():
             query = int(query)
-        logi = await ultroid_bot.get_entity(query)
+        logi = await puii_bot.get_entity(query)
         if not isinstance(logi, types.User):
             raise ValueError("Invalid Username.")
     except IndexError:
@@ -117,7 +117,7 @@ async def _(e):
         query = zzz[1]
         if query.isdigit():
             query = int(query)
-        logi = await ultroid_bot(gu(id=query))
+        logi = await puii_bot(gu(id=query))
         user = logi.users[0]
         mention = inline_mention(user)
         x = user.status

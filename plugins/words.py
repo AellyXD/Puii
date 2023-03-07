@@ -21,13 +21,13 @@
 """
 import io
 
-from pyUltroid.fns.misc import get_synonyms_or_antonyms
-from pyUltroid.fns.tools import async_searcher
+from pyPuii.fns.misc import get_synonyms_or_antonyms
+from pyPuii.fns.tools import async_searcher
 
-from . import get_string, ultroid_cmd
+from . import get_string, puii_cmd
 
 
-@ultroid_cmd(pattern="meaning( (.*)|$)", manager=True)
+@puii_cmd(pattern="meaning( (.*)|$)", manager=True)
 async def mean(event):
     wrd = event.pattern_match.group(1).strip()
     if not wrd:
@@ -64,7 +64,7 @@ async def mean(event):
         await event.eor(text)
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="(syno|anto)nym",
 )
 async def mean(event):
@@ -98,7 +98,7 @@ async def mean(event):
         )
 
 
-@ultroid_cmd(pattern="ud (.*)")
+@puii_cmd(pattern="ud (.*)")
 async def _(event):
     word = event.pattern_match.group(1).strip()
     if not word:

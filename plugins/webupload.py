@@ -14,12 +14,12 @@
 
 import os
 
-from pyUltroid.fns.tools import _webupload_cache
+from pyPuii.fns.tools import _webupload_cache
 
-from . import Button, asst, get_string, ultroid_cmd
+from . import Button, asst, get_string, puii_cmd
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="webupload( (.*)|$)",
 )
 async def _(event):

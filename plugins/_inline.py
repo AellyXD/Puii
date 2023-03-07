@@ -15,10 +15,10 @@ from telethon import Button
 from telethon.tl.types import InputWebDocument, Message
 from telethon.utils import resolve_bot_file_id
 
-from pyUltroid._misc._assistant import callback, in_pattern
-from pyUltroid.dB._core import HELP, LIST
-from pyUltroid.fns.helper import gen_chlog, time_formatter, updater
-from pyUltroid.fns.misc import split_list
+from pyPuii._misc._assistant import callback, in_pattern
+from pyPuii.dB._core import HELP, LIST
+from pyPuii.fns.helper import gen_chlog, time_formatter, updater
+from pyPuii.fns.misc import split_list
 
 from . import (
     HNDLR,
@@ -50,8 +50,7 @@ upage = 0
 
 SUP_BUTTONS = [
     [
-        Button.url("• Repo •", url="https://github.com/TeamUltroid/Ultroid"),
-        Button.url("• Support •", url="t.me/UltroidSupportChat"),
+        Button.url("• Support •", url="t.me/AellyXD"),
     ],
 ]
 
@@ -60,10 +59,10 @@ SUP_BUTTONS = [
 
 @in_pattern(owner=True, func=lambda x: not x.text)
 async def inline_alive(o):
-    TLINK = inline_pic() or "https://graph.org/file/74d6259983e0642923fdb.jpg"
-    MSG = "• **Ultroid Userbot •**"
+    TLINK = inline_pic() or "https://graph.org/file/4841c1a78db59c3f3c09a.jpg"
+    MSG = "• **Puii Userbot •**"
     WEB0 = InputWebDocument(
-        "https://graph.org/file/acd4f5d61369f74c5e7a7.jpg", 0, "image/jpg", []
+        "https://graph.org/file/4841c1a78db59c3f3c09a.jpg", 0, "image/jpg", []
     )
     RES = [
         await o.builder.article(
@@ -71,7 +70,7 @@ async def inline_alive(o):
             text=MSG,
             include_media=True,
             buttons=SUP_BUTTONS,
-            title="Ultroid Userbot",
+            title="Puii Userbot",
             description="Userbot | Telethon",
             url=TLINK,
             thumb=WEB0,
@@ -82,7 +81,7 @@ async def inline_alive(o):
         RES,
         private=True,
         cache_time=300,
-        switch_pm="👥 ULTROID PORTAL",
+        switch_pm="👥 PUII PORTAL",
         switch_pm_param="start",
     )
 
@@ -107,7 +106,7 @@ async def inline_handler(event):
         )
     else:
         result = await event.builder.article(
-            title="Ultroid Help Menu", text=text, buttons=_main_help_menu
+            title="Puii Help Menu", text=text, buttons=_main_help_menu
         )
     await event.answer([result], private=True, cache_time=300, gallery=True)
 
@@ -195,7 +194,7 @@ async def uptd_plugin(event):
                 help_ += "\n"
     if not help_:
         help_ = f"{file} has no Detailed Help!"
-    help_ += "\n© @TeamUltroid"
+    help_ += "\n© @AellyXD"
     buttons = []
     if inline_pic():
         data = f"sndplug_{key}_{file}"
@@ -242,13 +241,13 @@ async def _(event):
             file.write(tl_chnglog)
         await event.edit(
             get_string("upd_5"),
-            file="ultroid_updates.txt",
+            file="puii_updates.txt",
             buttons=[
                 [Button.inline("• Uᴘᴅᴀᴛᴇ Nᴏᴡ •", data="updatenow")],
                 [Button.inline("« Bᴀᴄᴋ", data="ownr")],
             ],
         )
-        remove("ultroid_updates.txt")
+        remove("puii_updates.txt")
     else:
         await event.edit(
             changelog_str,
@@ -398,9 +397,9 @@ async def ibuild(e):
                     results = [
                         await builder.document(
                             _pic,
-                            title="Ultroid Op",
+                            title="Puii Op",
                             text=txt,
-                            description="@TeamUltroid",
+                            description="@AellyXD,
                             buttons=btn,
                             link_preview=False,
                         )
@@ -413,10 +412,10 @@ async def ibuild(e):
                     cont = InputWebDocument(pic, 0, mime_type, [])
                 results = [
                     await builder.article(
-                        title="Ultroid Op",
+                        title="Puii Op",
                         type=_type,
                         text=txt,
-                        description="@TeamUltroid",
+                        description="@AellyXD",
                         include_media=include_media,
                         buttons=btn,
                         thumb=cont,
@@ -428,7 +427,7 @@ async def ibuild(e):
         except Exception as er:
             LOGS.exception(er)
     result = [
-        await builder.article("Ultroid Op", text=txt, link_preview=False, buttons=btn)
+        await builder.article("Puii Op", text=txt, link_preview=False, buttons=btn)
     ]
     await e.answer(result)
 

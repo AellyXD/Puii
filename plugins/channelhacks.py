@@ -15,9 +15,9 @@ import io
 from telethon.errors.rpcerrorlist import FloodWaitError
 from telethon.utils import get_display_name, get_peer_id
 
-from pyUltroid.dB.base import KeyManager
+from pyPuii.dB.base import KeyManager
 
-from . import LOGS, asst, eor, events, get_string, udB, ultroid_bot, ultroid_cmd
+from . import LOGS, asst, eor, events, get_string, udB, puii_bot, puii_cmd
 
 ERROR = {}
 SourceM = KeyManager("CH_SOURCE", cast=list)
@@ -44,7 +44,7 @@ async def autopost_func(e):
                 await asst.send_message(udB.get_key("LOG_CHANNEL"), Error)
 
 
-@ultroid_cmd(pattern="shift (.*)")
+@puii_cmd(pattern="shift (.*)")
 async def _(e):
     x = e.pattern_match.group(1).strip()
     z = await e.eor(get_string("com_1"))
@@ -72,7 +72,7 @@ async def _(e):
     await z.edit("Done")
 
 
-@ultroid_cmd(pattern="asource (.*)")
+@puii_cmd(pattern="asource (.*)")
 async def source(e):
     if x := e.pattern_match.group(1).strip():
         try:
@@ -85,12 +85,12 @@ async def source(e):
     if not SourceM.contains(y):
         SourceM.add(y)
         await e.eor(get_string("cha_2"))
-        ultroid_bot.add_handler(autopost_func, events.NewMessage())
+        puii_bot.add_handler(autopost_func, events.NewMessage())
     else:
         await e.eor(get_string("cha_3"))
 
 
-@ultroid_cmd(pattern="dsource( (.*)|$)")
+@puii_cmd(pattern="dsource( (.*)|$)")
 async def dd(event):
     chat_id = event.pattern_match.group(1).strip()
     x = await event.eor(get_string("com_1"))
@@ -114,7 +114,7 @@ async def dd(event):
         await eor(x, "Source channel is already removed from database. ", time=3)
 
 
-@ultroid_cmd(pattern="listsource")
+@puii_cmd(pattern="listsource")
 async def list_all(event):
     x = await event.eor(get_string("com_1"))
     num = SourceM.count()
@@ -145,7 +145,7 @@ async def list_all(event):
         await x.edit(msg)
 
 
-@ultroid_cmd(pattern="adest (.*)")
+@puii_cmd(pattern="adest (.*)")
 async def destination(e):
     if x := e.pattern_match.group(1).strip():
         try:
@@ -162,7 +162,7 @@ async def destination(e):
         await e.eor("Destination channel already added")
 
 
-@ultroid_cmd(pattern="ddest( (.*)|$)")
+@puii_cmd(pattern="ddest( (.*)|$)")
 async def dd(event):
     chat_id = event.pattern_match.group(1).strip()
     x = await event.eor(get_string("com_1"))
@@ -186,9 +186,9 @@ async def dd(event):
         await eor(x, "Destination channel is already removed from database. ", time=5)
 
 
-@ultroid_cmd(pattern="listdest")
+@puii_cmd(pattern="listdest")
 async def list_all(event):
-    ultroid_bot = event.client
+    puii_bot = event.client
     x = await event.eor(get_string("com_1"))
     channels = DestiM.get()
     num = len(channels)
@@ -198,7 +198,7 @@ async def list_all(event):
     for channel in channels:
         name = ""
         try:
-            name = get_display_name(await ultroid_bot.get_entity(int(channel)))
+            name = get_display_name(await puii_bot.get_entity(int(channel)))
         except BaseException:
             name = ""
         msg += f"\n=> **{name}** [`{channel}`]"
@@ -207,7 +207,7 @@ async def list_all(event):
         MSG = msg.replace("*", "").replace("`", "")
         with io.BytesIO(str.encode(MSG)) as out_file:
             out_file.name = "channels.txt"
-            await ultroid_bot.send_file(
+            await puii_bot.send_file(
                 event.chat_id,
                 out_file,
                 force_document=True,
@@ -221,4 +221,4 @@ async def list_all(event):
 
 
 if udB.get_key("AUTOPOST"):
-    ultroid_bot.add_handler(autopost_func, events.NewMessage())
+    puii_bot.add_handler(autopost_func, events.NewMessage())

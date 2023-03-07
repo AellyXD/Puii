@@ -11,12 +11,12 @@
     Unsplash Image Search.
 """
 
-from pyUltroid.fns.misc import unsplashsearch
+from pyPuii.fns.misc import unsplashsearch
 
-from . import asyncio, download_file, get_string, os, ultroid_cmd
+from . import asyncio, download_file, get_string, os, puii_cmd
 
 
-@ultroid_cmd(pattern="unsplash( (.*)|$)")
+@puii_cmd(pattern="unsplash( (.*)|$)")
 async def searchunsl(ult):
     match = ult.pattern_match.group(1).strip()
     if not match:

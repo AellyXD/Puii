@@ -40,7 +40,7 @@ import pytz
 from bs4 import BeautifulSoup as bs
 from telethon.tl.types import DocumentAttributeVideo
 
-from pyUltroid.fns.tools import get_google_images, metadata
+from pyPuii.fns.tools import get_google_images, metadata
 
 from . import (
     HNDLR,
@@ -52,8 +52,8 @@ from . import (
     get_string,
     mediainfo,
     quotly,
-    ultroid_bot,
-    ultroid_cmd,
+    puii_bot,
+    puii_cmd,
     uploader,
 )
 from .beautify import all_col
@@ -61,7 +61,7 @@ from .beautify import all_col
 File = []
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="getaudio$",
 )
 async def daudtoid(e):
@@ -85,7 +85,7 @@ async def daudtoid(e):
     await xxx.edit(get_string("spcltool_2"))
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="addaudio$",
 )
 async def adaudroid(e):
@@ -137,7 +137,7 @@ async def adaudroid(e):
     os.remove(File[0])
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern=r"dob( (.*)|$)",
 )
 async def hbd(event):
@@ -149,7 +149,7 @@ async def hbd(event):
         nam = await kk.get_sender()
         name = nam.first_name
     else:
-        name = ultroid_bot.me.first_name
+        name = puii_bot.me.first_name
     zn = pytz.timezone("Asia/Kolkata")
     abhi = dt.now(zn)
     kk = match.split("/")
@@ -251,7 +251,7 @@ Zodiac -: {sign}
     )
 
 
-@ultroid_cmd(pattern="sticker( (.*)|$)")
+@puii_cmd(pattern="sticker( (.*)|$)")
 async def _(event):
     x = event.pattern_match.group(1).strip()
     if not x:
@@ -275,7 +275,7 @@ async def _(event):
     await uu.edit(a, parse_mode="html")
 
 
-@ultroid_cmd(pattern="wall( (.*)|$)")
+@puii_cmd(pattern="wall( (.*)|$)")
 async def wall(event):
     inp = event.pattern_match.group(1).strip()
     if not inp:
@@ -288,7 +288,7 @@ async def wall(event):
     await nn.delete()
 
 
-@ultroid_cmd(pattern="q( (.*)|$)", manager=True, allow_pm=True)
+@puii_cmd(pattern="q( (.*)|$)", manager=True, allow_pm=True)
 async def quott_(event):
     match = event.pattern_match.group(1).strip()
     if not event.is_reply:
@@ -345,7 +345,7 @@ async def quott_(event):
         )
     except Exception as er:
         return await msg.edit(str(er))
-    message = await reply.reply("Quotly by Ultroid", file=file)
+    message = await reply.reply("Quotly by Puii", file=file)
     os.remove(file)
     await msg.delete()
     return message

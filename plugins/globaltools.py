@@ -44,9 +44,9 @@ from telethon.tl.functions.channels import EditAdminRequest
 from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
 from telethon.tl.types import ChatAdminRights, User
 
-from pyUltroid.dB import DEVLIST
-from pyUltroid.dB.base import KeyManager
-from pyUltroid.dB.gban_mute_db import (
+from pyPuii.dB import DEVLIST
+from pyPuii.dB.base import KeyManager
+from pyPuii.dB.gban_mute_db import (
     gban,
     gmute,
     is_gbanned,
@@ -55,7 +55,7 @@ from pyUltroid.dB.gban_mute_db import (
     ungban,
     ungmute,
 )
-from pyUltroid.fns.tools import create_tl_btn, format_btn, get_msg_button
+from pyPuii.fns.tools import create_tl_btn, format_btn, get_msg_button
 
 from . import (
     HNDLR,
@@ -66,8 +66,8 @@ from . import (
     eor,
     get_string,
     inline_mention,
-    ultroid_bot,
-    ultroid_cmd,
+    puii_bot,
+    Puii_cmd,
 )
 from ._inline import something
 
@@ -92,10 +92,10 @@ _gdemote_rights = ChatAdminRights(
 keym = KeyManager("GBLACKLISTS", cast=list)
 
 
-@ultroid_cmd(pattern="gpromote( (.*)|$)", fullsudo=True)
+@puii_cmd(pattern="gpromote( (.*)|$)", fullsudo=True)
 async def _(e):
     x = e.pattern_match.group(1).strip()
-    ultroid_bot = e.client
+    puii_bot = e.client
     if not x:
         return await e.eor(get_string("schdl_2"), time=5)
     user = await e.get_reply_message()
@@ -186,7 +186,7 @@ async def _(e):
                 and (x.is_group or x.is_channel)
             ):
                 try:
-                    await ultroid_bot(
+                    await puii_bot(
                         EditAdminRequest(
                             x.id,
                             user,
@@ -200,10 +200,10 @@ async def _(e):
         await eor(ev, f"Promoted {name.first_name} in Total : {c} {key} chats.")
 
 
-@ultroid_cmd(pattern="gdemote( (.*)|$)", fullsudo=True)
+@puii_cmd(pattern="gdemote( (.*)|$)", fullsudo=True)
 async def _(e):
     x = e.pattern_match.group(1).strip()
-    ultroid_bot = e.client
+    puii_bot = e.client
     if not x:
         return await e.eor(get_string("schdl_2"), time=5)
     user = await e.get_reply_message()
@@ -228,7 +228,7 @@ async def _(e):
                 and (x.is_group or x.is_channel)
             ):
                 try:
-                    await ultroid_bot(
+                    await puii_bot(
                         EditAdminRequest(
                             x.id,
                             user.id,
@@ -250,7 +250,7 @@ async def _(e):
         if user.isdigit():
             user = int(user)
         try:
-            name = await ultroid_bot.get_entity(user)
+            name = await puii_bot.get_entity(user)
         except BaseException:
             return await e.eor(f"`No User Found Regarding {user}`", time=5)
         ev = await e.eor(f"`Demoting {name.first_name} globally.`")
@@ -259,7 +259,7 @@ async def _(e):
             key = k[2]
         rank = "Not AdMin"
         c = 0
-        async for x in ultroid_bot.iter_dialogs():
+        async for x in puii_bot.iter_dialogs():
             if (
                 "group" in key.lower()
                 and x.is_group
@@ -271,7 +271,7 @@ async def _(e):
                 and (x.is_group or x.is_channel)
             ):
                 try:
-                    await ultroid_bot(
+                    await puii_bot(
                         EditAdminRequest(
                             x.id,
                             user,
@@ -285,7 +285,7 @@ async def _(e):
         await eor(ev, f"Demoted {name.first_name} in Total : {c} {key} chats.")
 
 
-@ultroid_cmd(pattern="ungban( (.*)|$)", fullsudo=True)
+@puii_cmd(pattern="ungban( (.*)|$)", fullsudo=True)
 async def _(e):
     xx = await e.eor("`UnGbanning...`")
     match = e.pattern_match.group(1).strip()
@@ -349,7 +349,7 @@ async def _(e):
     )
 
 
-@ultroid_cmd(pattern="gban( (.*)|$)", fullsudo=True)
+@puii_cmd(pattern="gban( (.*)|$)", fullsudo=True)
 async def _(e):
     xx = await e.eor("`Gbanning...`")
     reason = ""
@@ -385,7 +385,7 @@ async def _(e):
         userid = int(userid)
         name = str(userid)
     chats = 0
-    if userid == ultroid_bot.uid:
+    if userid == puii_bot.uid:
         return await xx.eor("`I can't gban myself.`", time=3)
     elif userid in DEVLIST:
         return await xx.eor("`I can't gban my Developers.`", time=3)
@@ -430,7 +430,7 @@ async def _(e):
     await xx.edit(gb_msg)
 
 
-@ultroid_cmd(pattern="g(admin|)cast( (.*)|$)", fullsudo=True)
+@puii_cmd(pattern="g(admin|)cast( (.*)|$)", fullsudo=True)
 async def gcast(event):
     text, btn, reply = "", None, None
     if xx := event.pattern_match.group(2):
@@ -516,7 +516,7 @@ async def gcast(event):
     await kk.edit(text)
 
 
-@ultroid_cmd(pattern="gucast( (.*)|$)", fullsudo=True)
+@puii_cmd(pattern="gucast( (.*)|$)", fullsudo=True)
 async def gucast(event):
     msg, btn, reply = "", None, None
     if xx := event.pattern_match.group(1).strip():
@@ -565,7 +565,7 @@ async def gucast(event):
     await kk.edit(f"Done in {done} chats, error in {er} chat(s)")
 
 
-@ultroid_cmd(pattern="gkick( (.*)|$)", fullsudo=True)
+@puii_cmd(pattern="gkick( (.*)|$)", fullsudo=True)
 async def gkick(e):
     xx = await e.eor("`Gkicking...`")
     if e.reply_to_msg_id:
@@ -578,7 +578,7 @@ async def gkick(e):
         return await xx.edit("`Reply to some msg or add their id.`", time=5)
     name = (await e.client.get_entity(userid)).first_name
     chats = 0
-    if userid == ultroid_bot.uid:
+    if userid == puii_bot.uid:
         return await xx.eor("`I can't gkick myself.`", time=3)
     if userid in DEVLIST:
         return await xx.eor("`I can't gkick my Developers.`", time=3)
@@ -597,7 +597,7 @@ async def gkick(e):
     await xx.edit(f"`Gkicked` [{name}](tg://user?id={userid}) `in {chats} chats.`")
 
 
-@ultroid_cmd(pattern="gmute( (.*)|$)", fullsudo=True)
+@puii_cmd(pattern="gmute( (.*)|$)", fullsudo=True)
 async def _(e):
     xx = await e.eor("`Gmuting...`")
     if e.reply_to_msg_id:
@@ -610,7 +610,7 @@ async def _(e):
         return await xx.eor("`Reply to some msg or add their id.`", tome=5, time=5)
     name = await e.client.get_entity(userid)
     chats = 0
-    if userid == ultroid_bot.uid:
+    if userid == puii_bot.uid:
         return await xx.eor("`I can't gmute myself.`", time=3)
     if userid in DEVLIST:
         return await xx.eor("`I can't gmute my Developers.`", time=3)
@@ -632,7 +632,7 @@ async def _(e):
     await xx.edit(f"`Gmuted` {inline_mention(name)} `in {chats} chats.`")
 
 
-@ultroid_cmd(pattern="ungmute( (.*)|$)", fullsudo=True)
+@puii_cmd(pattern="ungmute( (.*)|$)", fullsudo=True)
 async def _(e):
     xx = await e.eor("`UnGmuting...`")
     if e.reply_to_msg_id:
@@ -663,7 +663,7 @@ async def _(e):
     await xx.edit(f"`Ungmuted` {inline_mention(name)} `in {chats} chats.`")
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="listgban$",
 )
 async def list_gengbanned(event):
@@ -691,7 +691,7 @@ async def list_gengbanned(event):
             )
         await x.reply(
             file="gbanned.txt",
-            message=f"List of users GBanned by {inline_mention(ultroid_bot.me)}",
+            message=f"List of users GBanned by {inline_mention(puii_bot.me)}",
         )
         os.remove("gbanned.txt")
         await x.delete()
@@ -699,7 +699,7 @@ async def list_gengbanned(event):
         await x.edit(gbanned_users, parse_mode="html")
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="gstat( (.*)|$)",
 )
 async def gstat_(e):
@@ -727,12 +727,12 @@ async def gstat_(e):
     await xx.edit(msg)
 
 
-@ultroid_cmd(pattern="gblacklist$")
+@puii_cmd(pattern="gblacklist$")
 async def blacklist_(event):
     await gblacker(event, "add")
 
 
-@ultroid_cmd(pattern="ungblacklist$")
+@puii_cmd(pattern="ungblacklist$")
 async def ungblacker(event):
     await gblacker(event, "remove")
 

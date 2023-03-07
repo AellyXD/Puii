@@ -23,13 +23,13 @@ try:
     from PIL import Image
 except ImportError:
     Image = None
-from pyUltroid.fns.misc import unsplashsearch
-from pyUltroid.fns.tools import LogoHelper
+from pyPuii.fns.misc import unsplashsearch
+from pyPuii.fns.tools import LogoHelper
 
-from . import OWNER_ID, OWNER_NAME, download_file, get_string, mediainfo, ultroid_cmd
+from . import OWNER_ID, OWNER_NAME, download_file, get_string, mediainfo, puii_cmd
 
 
-@ultroid_cmd(pattern="logo( (.*)|$)")
+@puii_cmd(pattern="logo( (.*)|$)")
 async def logo_gen(event):
     xx = await event.eor(get_string("com_1"))
     name = event.pattern_match.group(1).strip()
@@ -68,7 +68,7 @@ async def logo_gen(event):
         else:
             pics = []
             async for i in event.client.iter_messages(
-                "@UltroidLogos", filter=InputMessagesFilterPhotos
+                "@PuiiLogos", filter=InputMessagesFilterPhotos
             ):
                 pics.append(i)
             id_ = random.choice(pics)

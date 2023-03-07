@@ -11,7 +11,7 @@ __doc__ = get_help("help_fontgen")
 
 import string
 
-from . import eod, ultroid_cmd
+from . import eod, puii_cmd
 
 _default = string.ascii_letters
 Fonts = {
@@ -22,7 +22,7 @@ Fonts = {
 }
 
 
-@ultroid_cmd(
+@puii_cmd(
     pattern="font( (.*)|$)",
 )
 async def _(e):

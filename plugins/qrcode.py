@@ -18,7 +18,7 @@
 """
 import os
 
-from pyUltroid import ULTConfig
+from pyPuii import ULTConfig
 
 try:
     import cv2
@@ -29,10 +29,10 @@ import qrcode
 from PIL import Image
 from telethon.tl.types import MessageMediaDocument as doc
 
-from . import check_filename, get_string, ultroid_bot, ultroid_cmd
+from . import check_filename, get_string, puii_bot, puii_cmd
 
 
-@ultroid_cmd(pattern="qrcode( (.*)|$)")
+@puii_cmd(pattern="qrcode( (.*)|$)")
 async def cd(e):
     reply = await e.get_reply_message()
     msg = e.pattern_match.group(1).strip()
@@ -43,8 +43,8 @@ async def cd(e):
     default, cimg = ULTConfig.thumb, None
     if reply and (reply.sticker or reply.photo):
         cimg = await reply.download_media()
-    elif ultroid_bot.me.photo and not ultroid_bot.me.photo.has_video:
-        cimg = await e.client.get_profile_photos(ultroid_bot.uid, limit=1)[0]
+    elif puii_bot.me.photo and not puii_bot.me.photo.has_video:
+        cimg = await e.client.get_profile_photos(puii_bot.uid, limit=1)[0]
 
     kk = await e.eor(get_string("com_1"))
     img = cimg or default
@@ -65,7 +65,7 @@ async def cd(e):
         os.remove(cimg)
 
 
-@ultroid_cmd(pattern="addqr( (.*)|$)")
+@puii_cmd(pattern="addqr( (.*)|$)")
 async def qrwater(e):
     msg = e.pattern_match.group(1).strip()
     r = await e.get_reply_message()
@@ -88,7 +88,7 @@ async def qrwater(e):
     os.remove(dl)
 
 
-@ultroid_cmd(pattern="qrdecode$")
+@puii_cmd(pattern="qrdecode$")
 async def decod(e):
     r = await e.get_reply_message()
     if not (r and r.media):

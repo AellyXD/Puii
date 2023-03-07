@@ -14,12 +14,12 @@
 """
 from datetime import timedelta
 
-from pyUltroid.fns.admins import ban_time
+from pyPuii.fns.admins import ban_time
 
-from . import get_string, ultroid_cmd
+from . import get_string, puii_cmd
 
 
-@ultroid_cmd(pattern="schedule( (.*)|$)", fullsudo=True)
+@puii_cmd(pattern="schedule( (.*)|$)", fullsudo=True)
 async def _(e):
     x = e.pattern_match.group(1).strip()
     xx = await e.get_reply_message()
