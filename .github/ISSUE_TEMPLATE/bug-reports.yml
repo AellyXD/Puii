@@ -28,7 +28,7 @@ body:
     id: version
     attributes:
       label: Version
-      description: What version of Ultroid are you running?
+      description: What version of Puii are you running?
       options:
         - "0.5"
         - "0.6"
@@ -41,7 +41,7 @@ body:
     id: hosted
     attributes:
       label: Hosted On
-      description: You are hosting Ultroid on Which Platform?
+      description: You are hosting Puii on Which Platform?
       options:
         - Vps
         - Heroku
@@ -62,7 +62,7 @@ body:
     id: terms
     attributes:
       label: Acknowledgement
-      description: By submitting this issue, you agree that you have read the [docs](https://ultroid.tech) and gone through the [deploy tutorial](https://www.youtube.com/watch?v=9wF7k9qA0Q4) at first.
+      description: By submitting this issue, you agree that you have read the [docs](https://t.me/kkara9009) and gone through the [deploy tutorial](https://www.youtube.com/watch?v=9wF7k9qA0Q4) at first.
       options:
         - label: I have followed all of the above steps.
           required: true
