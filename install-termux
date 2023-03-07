@@ -9,6 +9,6 @@ then
 else
     apt install git -y
     git clone https://github.com/AellyXD/Puii
-    cd Ultroid
+    cd Puii
 fi
 bash resources/startup/termux.sh
