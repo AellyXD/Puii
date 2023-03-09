@@ -37,7 +37,7 @@ Get the [Necessary Variables](#Necessary-Variables) and then click the button be
 ## Deploy to Okteto
 Get the [Necessary Variables](#Necessary-Variables) and then click the button below!
 
-[![Develop on Okteto](https://okteto.com/develop-okteto.svg)](https://cloud.okteto.com/deploy?repository=https://github.com/TeamUltroid/Ultroid)
+[![Develop on Okteto](https://okteto.com/develop-okteto.svg)](https://cloud.okteto.com/deploy?repository=https://github.com/AellyXD/Puii)
 
 ## Deploy Locally
 - [Traditional Method](#local-deploy---traditional-method)
@@ -52,9 +52,9 @@ Get the [Necessary Variables](#Necessary-Variables) and then click the button be
 ### Local Deploy - Traditional Method
 - Get your [Necessary Variables](#Necessary-Variables)
 - Clone the repository:    
-`git clone https://github.com/TeamUltroid/Ultroid.git`
+`git clone https://github.com/AellyXD/Puii.git`
 - Go to the cloned folder:    
-`cd Ultroid`
+`cd Puii`
 - Create a virtual env:      
 `virtualenv -p /usr/bin/python3 venv`
 `. ./venv/bin/activate`
@@ -69,8 +69,8 @@ Get the [Necessary Variables](#Necessary-Variables) and then click the button be
   - For Termux users:
     `wget -O session.py https://git.io/JY9JI && python session.py`
   - For Windows Users:
-    `cd desktop ; wget https://git.io/JY9JI -o ultroid.py ; python ultroid.py`
-- Fill your details in a `.env` file, as given in [`.env.sample`](https://github.com/TeamUltroid/Ultroid/blob/main/.env.sample).
+    `cd desktop ; wget https://git.io/JY9JI -o puii.py ; python puii.py`
+- Fill your details in a `.env` file, as given in [`.env.sample`](https://github.com/AellyXD/Puii/blob/main/.env.sample).
 (You can either edit and rename the file or make a new file named `.env`.)
 - Run the bot:
   - Linux Users:
