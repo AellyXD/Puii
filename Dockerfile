@@ -14,4 +14,3 @@ WORKDIR "/root/TeamUltroid"
 # start the bot.
 CMD ["bash", "startup"]
 
-Dockerfile m yhi daldo
