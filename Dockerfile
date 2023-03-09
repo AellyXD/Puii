@@ -1,25 +1,17 @@
-FROM python:3.9.7-slim-buster
+FROM theteamultroid/ultroid:main
 
-RUN apt-get update && apt-get upgrade -y
-
-RUN apt-get install git curl python3-pip ffmpeg -y
-
-RUN pip3 install -U pip
-
-RUN python3 -m pip install --upgrade pip
-
+# set timezone
 ENV TZ=Asia/Kolkata
-
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 COPY installer.sh .
 
 RUN bash installer.sh
 
-COPY . /app/
+# changing workdir
+WORKDIR "/root/TeamUltroid"
 
-WORKDIR /app/
-
-RUN pip3 install -U -r requirements.txt
-
+# start the bot.
 CMD ["bash", "startup"]
+
+Dockerfile m yhi daldo
