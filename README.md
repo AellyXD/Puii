@@ -83,7 +83,7 @@ Get the [Necessary Variables](#Necessary-Variables) and then click the button be
   - Linux Users:
    `bash startup`
   - Windows Users:
-    `python(3) -m pyUltroid`
+    `python(3) -m wa`
 
 ---
 ## Necessary Variables

@@ -1,9 +1,9 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2022 TeamUltroid
+# Puii - UserBot
+# Copyright (C) 2021-2022 TeamPuii
 #
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
+# This file is a part of < https://github.com/TeamPuii/Puii/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
+# <https://www.github.com/TeamPuii/Puii/blob/main/LICENSE/>.
 
 from telethon.errors import (
     BotMethodInvalidError,
@@ -54,7 +54,7 @@ async def repify(e):
 
 
 @puii_cmd(pattern="puii$")
-async def useUltroid(rs):
+async def usePuii(rs):
     button = Button.inline("Start >>", "initft_2")
     msg = await asst.send_message(
         LOG_CHANNEL,

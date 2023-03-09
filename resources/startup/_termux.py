@@ -177,7 +177,7 @@ print(
 (__)  (______)(____)(____)
 {Style.RESET_ALL}
 {Fore.GREEN}- PUII ermux Installation -
-  The Main Aim of this script is to deploy Ultroid with basic requirements and save your phone resources.
+  The Main Aim of this script is to deploy Puii with basic requirements and save your phone resources.
 {Fore.RESET}
 
 {COPYRIGHT}
@@ -239,7 +239,7 @@ if not path.exists(".env"):
 
 print(with_header(f"\n{Fore.GREEN}You are all Done! 🥳"))
 sleep(0.2)
-print(f"Use 'bash startup' to try running Ultroid.{Fore.RESET}")
+print(f"Use 'bash startup' to try running Puii.{Fore.RESET}")
 sleep(0.5)
 print(
     "\nYou can head over to @AellyXD, if you get stuck somewhere, and need help."
