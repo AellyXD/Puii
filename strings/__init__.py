@@ -3,7 +3,7 @@ import sys
 from glob import glob
 from typing import Any, Dict, List, Union
 
-from pyPuii mport *
+from pyPuii import *
 from pyPuii.fns.tools import translate
 
 try:
