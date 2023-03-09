@@ -399,7 +399,7 @@ async def ibuild(e):
                             _pic,
                             title="Puii Op",
                             text=txt,
-                            description="@AellyXD,
+                            description="@AellyXD",
                             buttons=btn,
                             link_preview=False,
                         )
