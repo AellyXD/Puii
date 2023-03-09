@@ -438,7 +438,7 @@ async def fetch_ann():
 
     try:
         updts = await async_searcher(
-            "https://puii-api.vercel.app/announcements", post=True, re_json=True
+            "https://ultroid-api.vercel.app/announcements", post=True, re_json=True
         )
         for upt in updts:
             key = list(upt.keys())[0]
