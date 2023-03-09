@@ -67,7 +67,7 @@ from . import (
     get_string,
     inline_mention,
     puii_bot,
-    Puii_cmd,
+    puii_cmd,
 )
 from ._inline import something
 
