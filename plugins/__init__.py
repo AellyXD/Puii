@@ -18,7 +18,7 @@ from pyPuii import *
 from pyPuii._misc._assistant import asst_cmd, callback, in_pattern
 from pyPuii._misc._decorators import puii_cmd
 from pyPuii._misc._wrappers import eod, eor
-from pyPuii.dB import DEVLIST, Puii_IMAGES
+from pyPuii.dB import DEVLIST, PUII_IMAGES
 from pyPuii.fns.helper import *
 from pyPuii.fns.misc import *
 from pyPuii.fns.tools import *
