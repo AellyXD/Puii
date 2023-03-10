@@ -1,4 +1,4 @@
-FROM theteamultroid/ultroid:main
+FROM aellyxd/puii:main
 
 # set timezone
 ENV TZ=Asia/Kolkata
@@ -9,7 +9,7 @@ COPY installer.sh .
 RUN bash installer.sh
 
 # changing workdir
-WORKDIR "/root/TeamUltroid"
+WORKDIR "/root/AellyXD"
 
 # start the bot.
 CMD ["bash", "startup"]
