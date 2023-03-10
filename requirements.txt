@@ -3,5 +3,5 @@
 https://github.com/New-dev0/Telethon/archive/platy.zip
 python-decouple
 python-dotenv
-pyPuii
+python-dotenv
 pyUltroid
