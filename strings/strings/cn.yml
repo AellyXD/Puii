@@ -263,7 +263,7 @@ help_autoban: "• `{i}autokick <on/off>`\n    on - To enable.\n    off - To dis
 can_2: "∆ #UsernameUpdate\n\n@{} changed username to @{}"
 aki_1: "Game has been Terminated...."
 youtube_8: "`Downloading video song...`"
-help_button: "-\n\n• `{i}button <text with button format`\n   create button u can reply to pic also\n\nFormat:- `{i}button Hey There! @UseUltroid 😎.\n[Ultroid | t.me/theUltroid][Support | t.me/UltroidSupportChat | same]\n[TeamUltroid | t.me/TeamUltroid]`"
+help_button: "-\n\n• `{i}button <text with button format`\n   create button u can reply to pic also\n\nFormat:- `{i}button Hey There! @UseUltroid 😎.\n[Ultroid | t.me/AellyXD][Support | t.me/UltroidSupportChat | same]\n[TeamUltroid | t.me/TeamUltroid]`"
 bot_1: "Hey,  I am alive."
 youtube_7: "Give me a (youtube) search query to download video from!"
 com_5: "Downloading..."

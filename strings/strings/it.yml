@@ -268,7 +268,7 @@ help_autoban: "• `{i} autokick <on/off>`\n    On - per abilitare.\n    OFF - P
 can_2: "∆ #usernameupdate\n\n@{} ha modificato il nome utente in @{}"
 aki_1: "Il gioco è stato chiuso ...."
 youtube_8: "`Scarica la canzone video ...`"
-help_button: "-\n\n• `{i} pulsante <testo con formato pulsante`\n   Crea pulsante che puoi rispondere anche a foto\n\nFormato:- `{i} pulsante he ehi!@Useultroid 😎.\n[Ultroid |T.me/theultroid onlinesupport |T.me/ultroidsupportChat |stesso]\n[Teamultroid |T.me/teamultroid] `"
+help_button: "-\n\n• `{i} pulsante <testo con formato pulsante`\n   Crea pulsante che puoi rispondere anche a foto\n\nFormato:- `{i} pulsante he ehi!@Useultroid 😎.\n[Ultroid |T.me/AellyXD onlinesupport |T.me/ultroidsupportChat |stesso]\n[Teamultroid |T.me/teamultroid] `"
 bot_1: "Ehi, sono vivo."
 youtube_7: "Dammi una query di ricerca (YouTube) per scaricare video da!"
 com_5: "Download ..."

@@ -151,7 +151,7 @@ def puii_cmd(
                         Button.url("Bot", "t.me/string_puiibot?start="),
                         Button.url(
                             "Repl",
-                            "https://replit.com/@TheUltroid/UltroidStringSession",
+                            "https://replit.com/@AellyXD/UltroidStringSession",
                         ),
                     ],
                 )
