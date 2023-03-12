@@ -13,7 +13,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
 RUN if [ ! $RAILWAY_STATIC_URL ]; then pip3 install --no-cache-dir yt-dlp; fi
 
 # changing workdir
-WORKDIR /root/AellyXD/
+WORKDIR /root/TheUltroid/
 
 # start the bot
 CMD ["bash", "startup"]
