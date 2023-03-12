@@ -1,13 +1,19 @@
-FROM aellyxd/puii:main
+FROM theteamultroid/ultroid:main
 
-RUN git clone -b Puii https://github.com/AellyXD/Puii /home/theultroid/ \
-    && chmod 777 /home/theultroid \
-    && mkdir /home/ultroid/bin/
+# set timezone
 
-COPY ./sample_config.env ./config.env* /home/theultroid/
+ENV TZ=Asia/Kolkata
 
-WORKDIR /home/theultroid/
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN pip install -r requirements.txt
+COPY installer.sh .
 
-CMD ["bash","start"]
+RUN bash installer.sh
+
+# changing workdir
+
+WORKDIR "/root/TeamUltroid"
+
+# start the bot.
+
+CMD ["bash", "startup"]
