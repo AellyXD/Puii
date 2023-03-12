@@ -1,4 +1,4 @@
-FROM aellyxd/puii:main
+FROM theteamultroid/ultroid:main
 
 # set timezone
 ENV TZ=Asia/Kolkata
