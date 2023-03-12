@@ -12,7 +12,7 @@ RUN bash installer.sh
 
 # changing workdir
 
-WORKDIR "/root/AellyXD"
+WORKDIR "/root/Ultroid"
 
 # start the bot.
 
