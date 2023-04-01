@@ -332,7 +332,7 @@ async def _(e):
         )
         Link = x.message_link
         await xx.edit(
-            f'<strong><a href="{Link}">[ChangeLogs]</a></strong>',
+            f'<strong><a href="{Link}">[ᴜᴘᴅᴀᴛᴇ ᴘᴜɪɪ]</a></strong>',
             parse_mode="html",
             link_preview=False,
         )
