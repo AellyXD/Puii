@@ -20,13 +20,13 @@ autopic_2: "找不到的结果 `{}`"
 autopic_3: "有收藏吗 `{}` 与您的搜索相关 !\n开始自选 !"
 
 # inline
-inline_1: "[Ultroid 帮助](t.me/UltroidSupportChat)\n\n
+inline_1: "[Ultroid 帮助](t.me/AellyXD)\n\n
 **帮助菜单 {}.\n\n
 插件 ~ {}**"
-inline_2: "[Ultroid 帮助](t.me/UltroidSupportChat)\n\n
+inline_2: "[Ultroid 帮助](t.me/AellyXD)\n\n
 **帮助菜单 {}.\n\n
 附加组件 ~ {}**"
-inline_3: "[Ultroid 帮助](t.me/UltroidSupportChat)\n\n
+inline_3: "[Ultroid 帮助](t.me/AellyXD)\n\n
 **帮助菜单 {}.\n\n
 附加组件 ~ {}\n\n
 去添加 `附加组件` var为true的值**"
@@ -263,7 +263,7 @@ help_autoban: "• `{i}autokick <on/off>`\n    on - To enable.\n    off - To dis
 can_2: "∆ #UsernameUpdate\n\n@{} changed username to @{}"
 aki_1: "Game has been Terminated...."
 youtube_8: "`Downloading video song...`"
-help_button: "-\n\n• `{i}button <text with button format`\n   create button u can reply to pic also\n\nFormat:- `{i}button Hey There! @UseUltroid 😎.\n[Ultroid | t.me/AellyXD][Support | t.me/UltroidSupportChat | same]\n[TeamUltroid | t.me/TeamUltroid]`"
+help_button: "-\n\n• `{i}button <text with button format`\n   create button u can reply to pic also\n\nFormat:- `{i}button Hey There! @UseUltroid 😎.\n[Ultroid | t.me/AellyXD][Support | t.me/AellyXD | same]\n[TeamUltroid | t.me/TeamUltroid]`"
 bot_1: "Hey,  I am alive."
 youtube_7: "Give me a (youtube) search query to download video from!"
 com_5: "Downloading..."

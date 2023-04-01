@@ -19,13 +19,13 @@ autopic_2: "`{}`ಗಾಗಿ ಯಾವುದೇ ಫಲಿತಾಂಶಗಳು �
 autopic_3: "ನಿಮ್ಮ ಹುಡುಕಾಟಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ಸಂಗ್ರಹ `{}` ಸಿಕ್ಕಿದೆ!\nಆಟೋಪಿಕ್ ಪ್ರಾರಂಭಿಸಲಾಗುತ್ತಿದೆ!!"
 
 #inline
-inline_1: "[ಅಲ್ಟ್ರಾಯ್ಡ್ ಸಪೋರ್ಟ್](t.me/UltroidSupportChat)\n\n
+inline_1: "[ಅಲ್ಟ್ರಾಯ್ಡ್ ಸಪೋರ್ಟ್](t.me/AellyXD)\n\n
 **{}ನ ಸಹಾಯ ಮೆನು.\n\n
 ಪ್ಲಗಿನ್ಸ್ ~ {}**"
-inline_2: "[ಅಲ್ಟ್ರಾಯ್ಡ್ ಸಪೋರ್ಟ್](t.me/UltroidSupportChat)\n\n
+inline_2: "[ಅಲ್ಟ್ರಾಯ್ಡ್ ಸಪೋರ್ಟ್](t.me/AellyXD)\n\n
 **{}ನ ಸಹಾಯ ಮೆನು.\n\n
 ಆಡ್ಅನ್ಸ್  ~ {}**"
-inline_3: "[ಅಲ್ಟ್ರಾಯ್ಡ್ ಸಪೋರ್ಟ್](t.me/UltroidSupportChat)\n\n**{}ನ ಸಹಾಯ ಮೆನು.\n\nಆಡ್ಅನ್ಸ್  ~ {}ಹೋಗಿ `ADDONS` Var ಗೆ True ಮೌಲ್ಯ ವನ್ನು ಸೇರಿಸಿ.**"
+inline_3: "[ಅಲ್ಟ್ರಾಯ್ಡ್ ಸಪೋರ್ಟ್](t.me/AellyXD)\n\n**{}ನ ಸಹಾಯ ಮೆನು.\n\nಆಡ್ಅನ್ಸ್  ~ {}ಹೋಗಿ `ADDONS` Var ಗೆ True ಮೌಲ್ಯ ವನ್ನು ಸೇರಿಸಿ.**"
 inline_4: "**{}ನ ಬೊಟ್\n\nಮೈನ್ ಮೆನು\n\nಪ್ಲಗಿನ್ಸ್ ~ {}\nಆಡ್ಅನ್ಸ್ ~ {}\nಒಟ್ಟು ಕಮಾಂಡ್ಗಳು ~ {}**"
 inline_5: "**ಮೆನು ಅನ್ನು ಮುಚ್ಚಲಾಗಿದೆ**"
 
@@ -266,7 +266,7 @@ help_autoban: "• `{i} autokick <on/off>`\n    ჩართვა.\n    გა�
 can_2: "∆ #USERNAMEUPDATE\n\n@{} შეიცვალა მომხმარებლის სახელი @{}"
 aki_1: "თამაში შეწყდა ...."
 youtube_8: "`ვიდეო სიმღერის ჩამოტვირთვა ...`"
-help_button: "-\n\n• `{i} ღილაკი <ტექსტი ღილაკის ფორმატით`\n   ღილაკის შექმნა და შეგიძლიათ უპასუხოთ სურათსაც\n\nფორმატი:- `{i} ღილაკი Hey!@Useultroid\n[ულტრაიტი |t.me/AellyXDovalociationociationSupport |t.me/ultroidsupportchat |იგივე]\n[Teamultroid |t.me/teamultroid] `"
+help_button: "-\n\n• `{i} ღილაკი <ტექსტი ღილაკის ფორმატით`\n   ღილაკის შექმნა და შეგიძლიათ უპასუხოთ სურათსაც\n\nფორმატი:- `{i} ღილაკი Hey!@Useultroid\n[ულტრაიტი |t.me/AellyXDovalociationociationSupport |t.me/AellyXD |იგივე]\n[Teamultroid |t.me/teamultroid] `"
 bot_1: "ჰეი, მე ცოცხალი ვარ."
 youtube_7: "მომეცი (YouTube) ძებნა შეკითხვა, რომ ჩამოტვირთოთ ვიდეო!"
 com_5: "ჩამოტვირთვა ..."
