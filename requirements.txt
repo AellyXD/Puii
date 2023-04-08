@@ -4,4 +4,6 @@ https://github.com/New-dev0/Telethon/archive/platy.zip
 python-decouple
 python-dotenv
 pyUltroid
+pytgcalls==3.0.0.dev24 
+
 
