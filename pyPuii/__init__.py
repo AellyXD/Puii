@@ -1,10 +1,3 @@
-# Puii - UserBot
-# Copyright (C) 2021-2022 TeamPuii
-#
-# This file is a part of < https://github.com/TeamPuii/Puii/ >
-# PLease read the GNU Affero General Public License in
-# <https://github.com/TeamPuii/pyPuii/blob/main/LICENSE>.
-
 import os
 import sys
 
