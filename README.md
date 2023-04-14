@@ -1,5 +1,7 @@
 <p align="center">
-  <img src="./resources/extras/logo_readme.jpg" alt="Puii Logo">
+  <img src="./resources/extras/logo_readme.jpg" alt="Puii Logo"
+  width="500" 
+     height="500" />
 </p>
 <h1 align="center">
   <b>Puii - UserBot</b>
