@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./resources/extras/logo_readme.jpg" alt="TeamUltroid Logo">
+  <img src="./resources/extras/logo_readme.jpg" alt="Puii Logo">
 </p>
 <h1 align="center">
   <b>puii - UserBot</b>
