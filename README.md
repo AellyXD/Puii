@@ -6,9 +6,9 @@
 <h1 align="center">
   <b>Puii - UserBot</b>
 </h1>
-
+<h2 align="center">
 <b>A stable pluggable Telegram userbot + Voice & Video Call music bot, based on Telethon.</b>
-
+</h2>
    
 [![Sparkline](https://stars.medv.io/AellyXD/Puii.svg)](https://stars.medv.io/AellyXD/Puii)
 ----
@@ -80,11 +80,11 @@ One of the following database:
 
 ## Session String
 Different ways to get your `SESSION`:
-* [![Run on Repl.it](https://replit.com/badge/github/TeamUltroid/Ultroid)](https://replit.com/@TeamUltroid/UltroidStringSession)
+* [![Run on Repl.it](https://replit.com/@anunicn47/GenerateStringSession?v=1)
 * Linux : `wget -O session.py https://git.io/JY9JI && python3 session.py`
 * PowerShell : `cd desktop ; wget https://git.io/JY9JI ; python ultroid.py`
 * Termux : `wget -O session.py https://git.io/JY9JI && python session.py`
-* TelegramBot : [@SessionGeneratorBot](https://t.me/SessionGeneratorBot)
+* TelegramBot : [@string_puiibot](https://t.me/string_puiibot)
 
 ---
 
@@ -92,11 +92,4 @@ Different ways to get your `SESSION`:
 [![License](https://www.gnu.org/graphics/agplv3-155x51.png)](LICENSE)   
 Ultroid is licensed under [GNU Affero General Public License](https://www.gnu.org/licenses/agpl-3.0.en.html) v3 or later.
 
----
-
-# Credits
-* [![TeamUltroid-Devs](https://img.shields.io/static/v1?label=Teamultroid&message=devs&color=critical)](https://t.me/UltroidDevs)
-* [Lonami](https://github.com/LonamiWebs/) for [Telethon.](https://github.com/LonamiWebs/Telethon)
-* [MarshalX](https://github.com/MarshalX) for [PyTgCalls.](https://github.com/MarshalX/tgcalls)
-
-> Made with 💕 by [@TeamUltroid](https://t.me/TeamUltroid).    
+---   
