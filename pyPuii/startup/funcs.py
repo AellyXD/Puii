@@ -90,10 +90,7 @@ def update_envs():
     """Update Var. attributes to udB"""
     from .. import udB
 
-     _envs = [*list(os.environ)]
-    if ".env" in os.listdir("."):
-        [_envs.append(_) for _ in list(RepositoryEnv(config._find_file(".")).data)]
-    for envs in _envs:
+    for envs in list(os.environ):
         if (
             envs in ["LOG_CHANNEL", "BOT_TOKEN", "BOTMODE", "DUAL_MODE", "language"]
             or envs in udB.keys()
